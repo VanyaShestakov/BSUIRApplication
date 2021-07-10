@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<link rel="stylesheet" th:href="@{/style/mainpage.css}" href="/style/mainpage.css" type="text/css"/>
+	<meta charset="utf-8">	
+
+	<title>LGS</title>
+</head>
+<body>
+	<div id="page">
+	<nav id="menu">
+			<ul id="navbar">
+				<li><a id="active" href="my_schedule.html">Моё расписание</a></li>
+				<li><a href="pages/team.html">Экзамены</a></li>
+				<li><a href="pages/safety.html">Расписание преподавателей</a></li>
+				<li><a href="pages/hills.html">Личный кабинет</a></li>
+				<li><a href="pages/shops.html">Магазины</a></li>
+				<li><a href="#">Альбом</a></li>
+			</ul>
+
+	</nav>
+
+	<div id="content">
+		<h1 th:text="${hello}"></h1>
+			<div id="content1" th:each="schedule:${schedules}">
+				<h6 th:text="${schedule.weekDay}"></h6>
+					<div id="content2" th:each="lesson:${schedule.schedule}" >
+						<h4 th:text="${lesson.subject}"></h4>
+						<img src="images/main1.jpg"  class="safety-img-content1">
+						<p class="text">Преподаватель: Иванов Иван Иванович</p>
+						<p class="text">Аудитория: 310-4</p>
+						<p class="text">Время: 9:00-10:20</p>
+						<p class="text">Подгруппа: 1</p>
+					</div>
+			</div>
+	</div>
+
+
+	<footer class="footer">
+
+		<div class="footer-logo">
+			<img width="50px" src="images/1.png">
+		</div>
+
+		<div class="footer-block">
+			<h3>
+				Мы в соцсетях
+			</h3>
+			<ul class="footer-ul" >
+				<li>
+					<a href="#" class="a-footer" ><img  src="images/instagram.png" width="15px" > Instagram</a>
+				</li>
+				<li>
+					<a href="#" class="a-footer" ><img  src="images/vk.png" width="15px" > ВКонтакте</a>
+				</li>
+				<li>
+					<a href="#" class="a-footer" ><img  src="images/telegram.png" width="15px" > Telegram</a>
+				</li>
+			</ul>
+		</div>
+		<div class="footer-block">
+			<h3>
+				Контакты
+			</h3>
+			<ul class="footer-ul" >
+				<li>
+					+375 (29) 584-35-78
+				</li>
+				<li>
+					г.Гомель, ул.Октябрьская 5/17; 246030
+				</li>
+				<li>
+					vanka1108@gmail.com
+				</li>
+			</ul>
+		</div>
+		<div class="footer-block">
+			<h3>
+				Друзья и партнёры
+			</h3>
+		</div>
+
+		<div class="author" > <h3> Created by Shestakov Ivan</h3> </div>
+	</footer>
+
+   </div>
+</body>
+</html>

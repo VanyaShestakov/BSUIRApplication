@@ -35,7 +35,7 @@ public class BSUIRSchedule {
     @JsonProperty("studentGroup")
     private StudentGroup studentGroup;
     @JsonProperty("schedules")
-    private List<Schedule> schedules = null;
+    private List<Schedules> schedules = null;
     @JsonProperty("examSchedules")
     private List<ExamSchedule> examSchedules = null;
     @JsonProperty("todayDate")
@@ -80,12 +80,12 @@ public class BSUIRSchedule {
     }
 
     @JsonProperty("schedules")
-    public List<Schedule> getSchedules() {
+    public List<Schedules> getSchedules() {
         return schedules;
     }
 
     @JsonProperty("schedules")
-    public void setSchedules(List<Schedule> schedules) {
+    public void setSchedules(List<Schedules> schedules) {
         this.schedules = schedules;
     }
 

@@ -16,7 +16,7 @@ public class ScheduleConnector {
 
     private final String URL = "https://journal.bsuir.by/api/v1/studentGroup/schedule?studentGroup=";
 
-    public BSUIRSchedule getBSUIRSchedule(int groupNumber) {
+    public BSUIRSchedule getBSUIRSchedule(String groupNumber) {
         ResponseEntity<BSUIRSchedule> responseEntity =
                 restTemplate.exchange
                         (URL + groupNumber, HttpMethod.GET, null, new ParameterizedTypeReference<BSUIRSchedule>() {});
