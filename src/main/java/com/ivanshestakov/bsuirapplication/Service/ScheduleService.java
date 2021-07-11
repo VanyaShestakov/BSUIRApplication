@@ -1,17 +1,13 @@
 package com.ivanshestakov.bsuirapplication.Service;
 
-import com.ivanshestakov.bsuirapplication.Connector.ScheduleConnector;
 import com.ivanshestakov.bsuirapplication.Entity.BSUIRSchedule;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.ivanshestakov.bsuirapplication.Entity.Schedules;
 
-@Service
-public class ScheduleService {
+import java.util.List;
 
-    @Autowired
-    private ScheduleConnector scheduleConnector;
+public interface ScheduleService {
 
-    public BSUIRSchedule getScheduleForGroup(String groupNumber) {
-        return scheduleConnector.getBSUIRSchedule(groupNumber);
-    }
+    public BSUIRSchedule getFullScheduleForGroup(String groupNumber);
+
+    public List<Schedules> getSchedulesForGroup(String groupNumber);
 }

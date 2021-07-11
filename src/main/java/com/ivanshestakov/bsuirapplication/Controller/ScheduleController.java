@@ -1,6 +1,7 @@
 package com.ivanshestakov.bsuirapplication.Controller;
 
 import com.ivanshestakov.bsuirapplication.Service.ScheduleService;
+import com.ivanshestakov.bsuirapplication.Service.ScheduleServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,9 +18,7 @@ public class ScheduleController {
 
     @GetMapping("/schedule/groupNumber={groupNumber}")
     private String showMySchedulePage(@PathVariable String groupNumber, Model model) {
-        model.addAttribute("schedules",  scheduleService.getScheduleForGroup(groupNumber).getSchedules());
-        model.addAttribute("hello", "hello");
-        System.out.println(scheduleService.getScheduleForGroup(groupNumber).getSchedules().get(0).getSchedule().get(0).getSubject());
+        model.addAttribute("schedules",  scheduleService.getSchedulesForGroup(groupNumber));
         return "my_schedule";
     }
 
