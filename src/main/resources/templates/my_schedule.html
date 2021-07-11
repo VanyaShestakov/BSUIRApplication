@@ -15,16 +15,16 @@
 		<nav class="menu">
 				<ul class="navbar">
 					<li>
-						<a class="active" href="my_schedule.html">Моё расписание</a>
+						<a class="active" href="my_schedule.html" th:text="#{menu.myschedule.title}"></a>
 					</li>
 					<li>
-						<a href="#">Экзамены</a>
+						<a href="#" th:text="#{menu.exams.title}"></a>
 					</li>
 					<li>
-						<a href="#">Расписание преподавателей</a>
+						<a href="#" th:text="#{menu.employeeschedule.title}"></a>
 					</li>
 					<li>
-						<a href="#">Личный кабинет</a>
+						<a href="#" th:text="#{menu.personalarea.title}"></a>
 					</li>
 				</ul>
 
@@ -35,11 +35,33 @@
 				<h2 th:text="${schedule.weekDay}"></h2>
 					<div class="block" th:each="lesson:${schedule.schedule}" >
 						<h3 th:text="${lesson.subject}"></h3>
-						<img src="#" th:if="${not lesson.employee.isEmpty()}" th:src="${lesson.employee.get(0).photoLink}"  class="blockImage">
-						<p class="text">Преподаватель: <th:block  th:if="${not lesson.employee.isEmpty()}" th:utext="${lesson.employee.get(0).fio}"/> </p>
-						<p class="text">Аудитория: <th:block  th:if="${not lesson.auditory.isEmpty()}" th:utext="${lesson.auditory.get(0)}"/> </p>
-						<p class="text">Время: <th:block th:utext="${lesson.lessonTime}"/> </p>
-						<p class="text">Неделя: <th:block th:utext="${lesson.weekNumber}"/> </p>
+
+						<img src="#"
+							 th:if="${not lesson.employee.isEmpty()}"
+							 th:src="${lesson.employee.get(0).photoLink}"
+							 class="blockImage" >
+
+						<p class="text">
+							<th:block th:text="#{info.employee.title}"/>
+							<th:block  th:if="${not lesson.employee.isEmpty()}"
+									   th:utext="${lesson.employee.get(0).fio}"/>
+						</p>
+
+						<p class="text">
+							<th:block th:text="#{info.auditory.title}"/>
+							<th:block  th:if="${not lesson.auditory.isEmpty()}"
+									   th:utext="${lesson.auditory.get(0)}"/>
+						</p>
+
+						<p class="text">
+							<th:block th:text="#{info.time.title}"/>
+							<th:block th:utext="${lesson.lessonTime}"/>
+						</p>
+
+						<p class="text">
+							<th:block th:text="#{info.week.title}"/>
+							<th:block th:utext="${lesson.weekNumber}"/>
+						</p>
 					</div>
 			</div>
 		</div>
@@ -52,44 +74,33 @@
 			</div>
 
 			<div class="footerBlock">
-				<h3>
-					Мы в соцсетях
-				</h3>
+				<h3 th:text="#{contactinfo.socialnetworks.title}"></h3>
 				<ul class="footerList" >
 					<li>
-						<a href="#" class="footerLink" ><img src="images/instagram.png" width="15px" > Instagram</a>
+						<a href="#" class="footerLink" ><img src="images/instagram.png" width="15px" th:text="#{contactinfo.instagram.title}"></a>
 					</li>
 					<li>
-						<a href="#" class="footerLink" ><img src="images/vk.png" width="15px" > ВКонтакте</a>
+						<a href="#" class="footerLink" ><img src="images/vk.png" width="15px" th:text="#{contactinfo.vk.title}"></a>
 					</li>
 					<li>
-						<a href="#" class="footerLink" ><img src="images/telegram.png" width="15px" > Telegram</a>
+						<a href="#" class="footerLink" ><img src="images/telegram.png" width="15px" th:text="#{contactinfo.telegram.title}"></a>
 					</li>
 				</ul>
 			</div>
 			<div class="footerBlock">
-				<h3>
-					Контакты
-				</h3>
+				<h3 th:text="#{contactinfo.contacts.title}"></h3>
 				<ul class="footerList" >
-					<li>
-						+375 (29) 584-35-78
-					</li>
-					<li>
-						г.Гомель, ул.Октябрьская 5/17; 246030
-					</li>
-					<li>
-						vanka1108@gmail.com
-					</li>
+					<li th:text="#{contactinfo.phonenumber}"></li>
+					<li th:text="#{contactinfo.address}"></li>
+					<li th:text="#{contactinfo.email}"></li>
 				</ul>
 			</div>
 			<div class="footerBlock">
-				<h3>
-					Друзья и партнёры
-				</h3>
+				<h3 th:text="#{contactinfo.friends&partners}"></h3>
 			</div>
-
-			<div class="authorInfo" > <h3> Created by Shestakov Ivan</h3> </div>
+			<div class="authorInfo">
+				<h3 th:text="#{contactinfo.authorinfo}"></h3>
+			</div>
 		</footer>
 
    </div>
