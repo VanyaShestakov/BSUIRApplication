@@ -1,87 +1,98 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<link rel="stylesheet" th:href="@{/style/mainpage.css}" href="/style/mainpage.css" type="text/css"/>
+	<link rel="stylesheet" th:href="@{/style/pageComponents.css}" href="/style/pageComponents.css" type="text/css"/>
+	<link rel="stylesheet" th:href="@{/style/footer.css}" href="/style/footer.css" type="text/css"/>
+	<link rel="stylesheet" th:href="@{/style/menu.css}" href="/style/menu.css" type="text/css"/>
 	<meta charset="utf-8">	
 
-	<title>LGS</title>
+	<title>BSUIR</title>
 </head>
+
 <body>
-	<div id="page">
-	<nav id="menu">
-			<ul id="navbar">
-				<li><a id="active" href="my_schedule.html">Моё расписание</a></li>
-				<li><a href="pages/team.html">Экзамены</a></li>
-				<li><a href="pages/safety.html">Расписание преподавателей</a></li>
-				<li><a href="pages/hills.html">Личный кабинет</a></li>
-				<li><a href="pages/shops.html">Магазины</a></li>
-				<li><a href="#">Альбом</a></li>
-			</ul>
+	<div class="page">
 
-	</nav>
+		<nav class="menu">
+				<ul class="navbar">
+					<li>
+						<a class="active" href="my_schedule.html">Моё расписание</a>
+					</li>
+					<li>
+						<a href="#">Экзамены</a>
+					</li>
+					<li>
+						<a href="#">Расписание преподавателей</a>
+					</li>
+					<li>
+						<a href="#">Личный кабинет</a>
+					</li>
+				</ul>
 
-	<div id="content">
-			<div id="content1" th:each="schedule:${schedules}">
+		</nav>
+
+		<div class="tape">
+			<div class="blockContainer" th:each="schedule:${schedules}">
 				<h2 th:text="${schedule.weekDay}"></h2>
-					<div id="content2" th:each="lesson:${schedule.schedule}" >
+					<div class="block" th:each="lesson:${schedule.schedule}" >
 						<h3 th:text="${lesson.subject}"></h3>
-						<img src="#" th:if="${not lesson.employee.isEmpty()}" th:src="${lesson.employee.get(0).photoLink}"  class="safety-img-content1">
+						<img src="#" th:if="${not lesson.employee.isEmpty()}" th:src="${lesson.employee.get(0).photoLink}"  class="blockImage">
 						<p class="text">Преподаватель: <th:block  th:if="${not lesson.employee.isEmpty()}" th:utext="${lesson.employee.get(0).fio}"/> </p>
 						<p class="text">Аудитория: <th:block  th:if="${not lesson.auditory.isEmpty()}" th:utext="${lesson.auditory.get(0)}"/> </p>
 						<p class="text">Время: <th:block th:utext="${lesson.lessonTime}"/> </p>
 						<p class="text">Неделя: <th:block th:utext="${lesson.weekNumber}"/> </p>
 					</div>
 			</div>
-	</div>
-
-
-	<footer class="footer">
-
-		<div class="footer-logo">
-			<img width="50px" src="images/1.png">
 		</div>
 
-		<div class="footer-block">
-			<h3>
-				Мы в соцсетях
-			</h3>
-			<ul class="footer-ul" >
-				<li>
-					<a href="#" class="a-footer" ><img  src="images/instagram.png" width="15px" > Instagram</a>
-				</li>
-				<li>
-					<a href="#" class="a-footer" ><img  src="images/vk.png" width="15px" > ВКонтакте</a>
-				</li>
-				<li>
-					<a href="#" class="a-footer" ><img  src="images/telegram.png" width="15px" > Telegram</a>
-				</li>
-			</ul>
-		</div>
-		<div class="footer-block">
-			<h3>
-				Контакты
-			</h3>
-			<ul class="footer-ul" >
-				<li>
-					+375 (29) 584-35-78
-				</li>
-				<li>
-					г.Гомель, ул.Октябрьская 5/17; 246030
-				</li>
-				<li>
-					vanka1108@gmail.com
-				</li>
-			</ul>
-		</div>
-		<div class="footer-block">
-			<h3>
-				Друзья и партнёры
-			</h3>
-		</div>
 
-		<div class="author" > <h3> Created by Shestakov Ivan</h3> </div>
-	</footer>
+		<footer class="footer">
+
+			<div class="footerLogo">
+				<img width="50px" src="images/1.png">
+			</div>
+
+			<div class="footerBlock">
+				<h3>
+					Мы в соцсетях
+				</h3>
+				<ul class="footerList" >
+					<li>
+						<a href="#" class="footerLink" ><img src="images/instagram.png" width="15px" > Instagram</a>
+					</li>
+					<li>
+						<a href="#" class="footerLink" ><img src="images/vk.png" width="15px" > ВКонтакте</a>
+					</li>
+					<li>
+						<a href="#" class="footerLink" ><img src="images/telegram.png" width="15px" > Telegram</a>
+					</li>
+				</ul>
+			</div>
+			<div class="footerBlock">
+				<h3>
+					Контакты
+				</h3>
+				<ul class="footerList" >
+					<li>
+						+375 (29) 584-35-78
+					</li>
+					<li>
+						г.Гомель, ул.Октябрьская 5/17; 246030
+					</li>
+					<li>
+						vanka1108@gmail.com
+					</li>
+				</ul>
+			</div>
+			<div class="footerBlock">
+				<h3>
+					Друзья и партнёры
+				</h3>
+			</div>
+
+			<div class="authorInfo" > <h3> Created by Shestakov Ivan</h3> </div>
+		</footer>
 
    </div>
+
 </body>
 </html>

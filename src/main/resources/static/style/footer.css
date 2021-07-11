@@ -1,0 +1,65 @@
+.footer {
+    background: rgba(0,0,0,0.5);
+    height: 300px;
+    width: 100%;
+    bottom: 0;
+    padding-top: 15px;
+    margin-top: 170px;
+}
+
+.footerLogo {
+    margin-left: 20px;
+    font-family: "Veranda", sans-serif ;
+    font-size: 20px;
+    color: grey;
+    text-transform: uppercase;
+    vertical-align: middle;
+}
+
+.footerBlock {
+    display: inline-block;
+    margin-right: 20px;
+    margin-left: 20px;
+    vertical-align: top;
+
+}
+
+.footerBlock h3 {
+    color: grey;
+    font-weight: 100;
+    text-transform: uppercase;
+}
+
+.footerList {
+    list-style-type: none;
+    font-family: "Veranda", sans-serif ;
+    font-size: 15px;
+    padding: 0;
+    color: grey;
+    line-height: 2;
+    font-weight: 100;
+
+}
+
+.footerLink {
+    text-decoration: none;
+    font-family: "Veranda", sans-serif ;
+    display: block;
+    color: grey;
+}
+
+.footerLink:hover {
+    color: yellow;
+    transition: 0.2s;
+}
+
+.authorInfo {
+    float: right;
+    margin-right: 10px;
+}
+
+.authorInfo h3 {
+    color: grey;
+    font-weight: 100;
+    text-transform: uppercase;
+}
