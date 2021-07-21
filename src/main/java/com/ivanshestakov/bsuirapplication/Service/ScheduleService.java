@@ -14,5 +14,10 @@ public interface ScheduleService {
 
     public void updateGroups(List<Group> newGroupList);
 
-    public List<Group> getGroups();
+    public List<Group> getGroupsFromBSUIRServer();
+
+    public List<Group> getGroupsFromDB();
+
+    public boolean groupExists(String groupNumber);
+
 }

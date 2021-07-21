@@ -19,4 +19,9 @@ public class GroupDAOImpl implements GroupDAO {
         Session session = entityManager.unwrap(Session.class);
         newGroupList.stream().forEach(session::saveOrUpdate);
     }
+
+
+    public List<Group> getGroups(){
+        return entityManager.unwrap(Session.class).createQuery("from Group ", Group.class).getResultList();
+    }
 }

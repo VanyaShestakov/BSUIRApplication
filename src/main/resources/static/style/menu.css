@@ -1,5 +1,5 @@
 .menu {
-    background-color: #1c1c1c;
+    background-color: #252936;
     width: 100%;
     height: 50px;
     top: 0;
@@ -41,12 +41,12 @@
 }
 
 .navbar a:hover {
-    background-color: yellow;
+    background-color:#0085ff;
     transition: 0.2s;
-    color: black;
+    color: white;
 }
 
 
 .active {
-    border-bottom: 2px solid yellow;
+    border-bottom: 2px solid#0085ff;
 }

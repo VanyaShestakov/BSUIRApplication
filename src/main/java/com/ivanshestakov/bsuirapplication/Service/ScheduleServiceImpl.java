@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ScheduleServiceImpl implements ScheduleService{
@@ -32,14 +33,28 @@ public class ScheduleServiceImpl implements ScheduleService{
     }
 
     @Override
-    public List<Group> getGroups(){
+    public List<Group> getGroupsFromBSUIRServer(){
         return scheduleConnector.getGroups();
+    }
+
+    @Transactional
+    @Override
+    public List<Group> getGroupsFromDB() {
+        return groupDAO.getGroups();
     }
 
     @Transactional
     @Override
     public void updateGroups(List<Group> newGroupList){
         groupDAO.updateGroupTable(newGroupList);
+    }
+
+    @Override
+    public boolean groupExists(String groupNumber) {
+        return getGroupsFromDB().stream()
+                .map(Group::getGroupNumber)
+                .collect(Collectors.toList())
+                .contains(groupNumber);
     }
 
 

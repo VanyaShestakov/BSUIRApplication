@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/BSUIRApp")
@@ -15,10 +16,21 @@ public class ScheduleController {
     @Autowired
     private ScheduleService scheduleService;
 
-    @GetMapping("/schedule/groupNumber={groupNumber}")
-    private String showMySchedulePage(@PathVariable String groupNumber, Model model) {
-        model.addAttribute("schedules",  scheduleService.getSchedulesForGroup(groupNumber));
+    @GetMapping("/")
+    private String showMySchedulePage() {
         return "my_schedule";
     }
+
+    @GetMapping("/schedule")
+    private String showSchedule(@RequestParam String groupNumber, Model model) {
+        if (!scheduleService.groupExists(groupNumber)) {
+            model.addAttribute("error", "The group with number " + groupNumber + " does not exists");
+        } else {
+            model.addAttribute("schedules", scheduleService.getSchedulesForGroup(groupNumber));
+        }
+
+        return "my_schedule";
+    }
+
 
 }
