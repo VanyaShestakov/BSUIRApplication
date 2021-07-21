@@ -1,4 +1,4 @@
-package com.ivanshestakov.bsuirapplication.Entity;
+package com.ivanshestakov.bsuirapplication.BSUIRAPIEntity;
 
 import java.util.HashMap;
 import java.util.List;

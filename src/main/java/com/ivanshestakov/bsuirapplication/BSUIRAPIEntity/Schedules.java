@@ -1,4 +1,4 @@
-package com.ivanshestakov.bsuirapplication.Entity;
+package com.ivanshestakov.bsuirapplication.BSUIRAPIEntity;
 
 import java.util.HashMap;
 import java.util.List;
@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         "schedule"
 })
 @Generated("jsonschema2pojo")
-public class ExamSchedule {
+public class Schedules {
 
     @JsonProperty("weekDay")
     private String weekDay;
@@ -55,4 +55,5 @@ public class ExamSchedule {
     public void setAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
     }
+
 }

@@ -1,7 +1,6 @@
 package com.ivanshestakov.bsuirapplication.Controller;
 
 import com.ivanshestakov.bsuirapplication.Service.ScheduleService;
-import com.ivanshestakov.bsuirapplication.Service.ScheduleServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
