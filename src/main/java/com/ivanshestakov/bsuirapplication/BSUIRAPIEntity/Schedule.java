@@ -238,4 +238,8 @@ public class Schedule {
         this.additionalProperties.put(name, value);
     }
 
+    public String getStringRepresentOfWeekNumbers() {
+        return weekNumber != null && weekNumber.size() != 0 ? (weekNumber.get(0) == 0 ? "Каждую неделю" : weekNumber.toString().substring(1, weekNumber.toString().length() - 1) ) : "";
+    }
+
 }

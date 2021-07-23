@@ -15,7 +15,7 @@
 		<nav class="menu">
 				<ul class="navbar">
 					<li>
-						<a class="active" href="my_schedule.html" th:text="#{menu.myschedule.title}"></a>
+						<a class="active" href="/BSUIRApp/" th:text="#{menu.myschedule.title}"></a>
 					</li>
 					<li>
 						<a href="#" th:text="#{menu.exams.title}"></a>
@@ -34,11 +34,12 @@
 
 			<div class="blockContainer">
 				<div class="block" align="center">
-					<form action="/BSUIRApp/schedule" method="get">
-						<input name="groupNumber" type="text"/>
+					<form action="/BSUIRApp/" method="post">
+						<input class="textField" name="groupNumber" type="text"/>
+						<br>
 						<input class="button" type="submit" value="Get">
 					</form>
-					<th:block th:text="${error}"/>
+					<th:block th:text="${error}"></th:block>
 				</div>
 			</div>
 
@@ -54,8 +55,11 @@
 
 						<p class="text">
 							<th:block th:text="#{info.employee.title}"/>
-							<th:block  th:if="${not lesson.employee.isEmpty()}"
-									   th:utext="${lesson.employee.get(0).fio}"/>
+							<a class="textLink" href="#">
+								<th:block  th:if="${not lesson.employee.isEmpty()}"
+										   th:utext="${lesson.employee.get(0).fio}"/>
+							</a>
+
 						</p>
 
 						<p class="text">
@@ -71,7 +75,7 @@
 
 						<p class="text">
 							<th:block th:text="#{info.week.title}"/>
-							<th:block th:utext="${lesson.weekNumber}"/>
+							<th:block th:utext="${lesson.getStringRepresentOfWeekNumbers()}"/>
 						</p>
 					</div>
 			</div>

@@ -141,7 +141,7 @@ tr {
 	transition: 0.4s;
 	font-weight: 700;/*толщина шрифта*/
 	background-color: #0085ff;
-	border-radius: 5px;
+	border-radius: 20px;
 	border-style: none;
 }
 
@@ -157,5 +157,21 @@ tr {
 	height: 100px;
 	margin-right: 20px;
 	border-radius: 50%;
+}
+
+.textField {
+	text-decoration: none;
+	color: white;
+	font-family: "Veranda", sans-serif ;
+	font-size: 12px;
+	display: block;
+	height: 25px;
+	line-height: 25px;
+	width: 100px;
+	transition: 0.4s;
+	font-weight: 700;/*толщина шрифта*/
+	background-color: #3a3c3e;
+	border-radius: 20px;
+	border-style: none;
 }
 
