@@ -14,7 +14,7 @@ public interface ScheduleService {
 
     public void updateGroups(List<Group> newGroupList);
 
-    public List<Group> getGroupsFromBSUIRServer();
+    public List<Group> getGroupsFromServer();
 
     public List<Group> getGroupsFromDB();
 

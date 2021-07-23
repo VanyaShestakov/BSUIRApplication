@@ -32,5 +32,10 @@ public class ScheduleController {
         return "my_schedule";
     }
 
+    @GetMapping("/teacher")
+    private String showTeacherInfoPage() {
+        return "teacher_info";
+    }
+
 
 }

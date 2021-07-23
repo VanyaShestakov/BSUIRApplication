@@ -15,6 +15,13 @@ public class ScheduleUpdater {
 
     @Scheduled(initialDelay = 2000, fixedDelay = 10000)
     public void updateGroups(){
-        scheduleService.updateGroups(scheduleService.getGroupsFromBSUIRServer());
+        scheduleService.updateGroups(scheduleService.getGroupsFromServer());
     }
+
+
+
+
+
+
+
 }

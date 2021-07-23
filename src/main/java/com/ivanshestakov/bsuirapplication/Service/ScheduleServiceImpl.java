@@ -1,7 +1,6 @@
 package com.ivanshestakov.bsuirapplication.Service;
 
-import com.ivanshestakov.bsuirapplication.Connector.ScheduleConnector;
-import com.ivanshestakov.bsuirapplication.Connector.ScheduleConnectorImpl;
+import com.ivanshestakov.bsuirapplication.Connector.ServerConnector;
 import com.ivanshestakov.bsuirapplication.BSUIRAPIEntity.BSUIRSchedule;
 import com.ivanshestakov.bsuirapplication.BSUIRAPIEntity.Schedules;
 import com.ivanshestakov.bsuirapplication.DAO.GroupDAO;
@@ -17,24 +16,24 @@ import java.util.stream.Collectors;
 public class ScheduleServiceImpl implements ScheduleService{
 
     @Autowired
-    private ScheduleConnector scheduleConnector;
+    private ServerConnector serverConnector;
 
     @Autowired
     private GroupDAO groupDAO;
 
     @Override
     public BSUIRSchedule getFullScheduleForGroup(String groupNumber) {
-        return scheduleConnector.getBSUIRSchedule(groupNumber);
+        return serverConnector.getBSUIRSchedule(groupNumber);
     }
 
     @Override
     public List<Schedules> getSchedulesForGroup(String groupNumber) {
-        return scheduleConnector.getBSUIRSchedule(groupNumber).getSchedules();
+        return serverConnector.getBSUIRSchedule(groupNumber).getSchedules();
     }
 
     @Override
-    public List<Group> getGroupsFromBSUIRServer(){
-        return scheduleConnector.getGroups();
+    public List<Group> getGroupsFromServer(){
+        return serverConnector.getGroups();
     }
 
     @Transactional
