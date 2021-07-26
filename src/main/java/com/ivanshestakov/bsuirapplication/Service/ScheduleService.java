@@ -27,4 +27,6 @@ public interface ScheduleService {
 
     public List<Employee> getEmployeesFromDB();
 
+    public Employee getEmployeeById(int id);
+
 }

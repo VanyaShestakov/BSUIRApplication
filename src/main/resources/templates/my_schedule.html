@@ -53,14 +53,14 @@
 							 th:src="${lesson.employee.get(0).photoLink}"
 							 class="blockImage" >
 
-						<p class="text">
-							<th:block th:text="#{info.employee.title}"/>
-							<a class="textLink" href="#">
-								<th:block  th:if="${not lesson.employee.isEmpty()}"
-										   th:utext="${lesson.employee.get(0).fio}"/>
-							</a>
-
-						</p>
+						<form method="post" action="/BSUIRApp/teacher/">
+							<p class="text">
+								<input type="hidden" th:if="${not lesson.employee.isEmpty()}" th:value="${lesson.employee.get(0).id}" th:name="id">
+								<th:block th:text="#{info.employee.title}"/>
+								<input class="button" type="submit" th:if="${not lesson.employee.isEmpty()}"
+									   th:value="${lesson.employee.get(0).fio}">
+							</p>
+						</form>
 
 						<p class="text">
 							<th:block th:text="#{info.auditory.title}"/>

@@ -78,6 +78,12 @@ public class ScheduleServiceImpl implements ScheduleService{
         employeeDAO.updateEmployeesTable(newEmployeeList);
     }
 
+    @Transactional
+    @Override
+    public Employee getEmployeeById(int id){
+        return employeeDAO.getEmployeeById(id);
+    }
+
 
 
 

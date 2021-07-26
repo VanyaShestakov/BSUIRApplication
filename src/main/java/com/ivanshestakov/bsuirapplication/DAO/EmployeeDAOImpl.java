@@ -24,4 +24,9 @@ public class EmployeeDAOImpl implements EmployeeDAO{
         Session session = entityManager.unwrap(Session.class);
         newEmployeeList.forEach(session::saveOrUpdate);
     }
+
+    @Override
+    public Employee getEmployeeById(int id){
+        return entityManager.unwrap(Session.class).get(Employee.class, id);
+    }
 }

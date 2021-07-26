@@ -32,8 +32,9 @@ public class ScheduleController {
         return "my_schedule";
     }
 
-    @GetMapping("/teacher")
-    private String showTeacherInfoPage() {
+    @PostMapping("/teacher")
+    private String showTeacherInfoPage(@RequestParam("id") int id, Model model) {
+        model.addAttribute("employee", scheduleService.getEmployeeById(id));
         return "teacher_info";
     }
 
