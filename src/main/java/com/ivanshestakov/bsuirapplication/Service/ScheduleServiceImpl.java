@@ -3,7 +3,9 @@ package com.ivanshestakov.bsuirapplication.Service;
 import com.ivanshestakov.bsuirapplication.Connector.ServerConnector;
 import com.ivanshestakov.bsuirapplication.BSUIRAPIEntity.BSUIRSchedule;
 import com.ivanshestakov.bsuirapplication.BSUIRAPIEntity.Schedules;
+import com.ivanshestakov.bsuirapplication.DAO.EmployeeDAO;
 import com.ivanshestakov.bsuirapplication.DAO.GroupDAO;
+import com.ivanshestakov.bsuirapplication.Model.Employee;
 import com.ivanshestakov.bsuirapplication.Model.Group;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +22,9 @@ public class ScheduleServiceImpl implements ScheduleService{
 
     @Autowired
     private GroupDAO groupDAO;
+
+    @Autowired
+    private EmployeeDAO employeeDAO;
 
     @Override
     public BSUIRSchedule getFullScheduleForGroup(String groupNumber) {
@@ -55,6 +60,25 @@ public class ScheduleServiceImpl implements ScheduleService{
                 .collect(Collectors.toList())
                 .contains(groupNumber);
     }
+
+    @Override
+    public List<Employee> getEmployeesFromServer(){
+        return serverConnector.getEmployees();
+    }
+
+    @Transactional
+    @Override
+    public List<Employee> getEmployeesFromDB(){
+        return employeeDAO.getEmployees();
+    }
+
+    @Transactional
+    @Override
+    public void updateEmployees(List<Employee> newEmployeeList){
+        employeeDAO.updateEmployeesTable(newEmployeeList);
+    }
+
+
 
 
 }

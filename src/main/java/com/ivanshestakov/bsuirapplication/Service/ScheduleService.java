@@ -2,6 +2,7 @@ package com.ivanshestakov.bsuirapplication.Service;
 
 import com.ivanshestakov.bsuirapplication.BSUIRAPIEntity.BSUIRSchedule;
 import com.ivanshestakov.bsuirapplication.BSUIRAPIEntity.Schedules;
+import com.ivanshestakov.bsuirapplication.Model.Employee;
 import com.ivanshestakov.bsuirapplication.Model.Group;
 
 import java.util.List;
@@ -19,5 +20,11 @@ public interface ScheduleService {
     public List<Group> getGroupsFromDB();
 
     public boolean groupExists(String groupNumber);
+
+    public void updateEmployees(List<Employee> newEmployeeList);
+
+    public List<Employee> getEmployeesFromServer();
+
+    public List<Employee> getEmployeesFromDB();
 
 }

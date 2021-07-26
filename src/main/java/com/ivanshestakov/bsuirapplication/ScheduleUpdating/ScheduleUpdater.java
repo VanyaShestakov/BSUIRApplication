@@ -18,6 +18,11 @@ public class ScheduleUpdater {
         scheduleService.updateGroups(scheduleService.getGroupsFromServer());
     }
 
+    @Scheduled(initialDelay = 2000, fixedDelay = 10000)
+    public void updateEmployees() {
+        scheduleService.updateEmployees(scheduleService.getEmployeesFromServer());
+    }
+
 
 
 

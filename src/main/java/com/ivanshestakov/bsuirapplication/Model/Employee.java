@@ -6,7 +6,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.util.List;
 
 @Entity
 @Table(name = "employees")
@@ -21,19 +20,19 @@ public class Employee {
     @JsonProperty("firstName")
     private String firstName;
 
-    @Column(name = "first_name")
+    @Column(name = "last_name")
     @JsonProperty("lastName")
     private String lastName;
 
-    @Column(name = "first_name")
+    @Column(name = "middle_name")
     @JsonProperty("middleName")
     private String middleName;
 
-    @Column(name = "first_name")
+    @Column(name = "degree")
     @JsonProperty("degree")
     private String degree;
 
-    @Column(name = "first_name")
+    @Column(name = "teacher_rank")
     @JsonProperty("rank")
     private String rank;
 
