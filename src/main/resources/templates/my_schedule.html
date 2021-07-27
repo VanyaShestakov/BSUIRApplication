@@ -45,7 +45,7 @@
 
 			<div class="blockContainer" th:each="schedule:${schedules}">
 				<h2 th:text="${schedule.weekDay}"></h2>
-					<div class="block" th:each="lesson:${schedule.schedule}" th:style="${lesson.lessonType.equals('ЛК') ? 'border-color:green' : (lesson.lessonType.equals('ПЗ') ? 'border-color:yellow' : 'border-color:red')}">
+					<div class="block" th:each="lesson:${schedule.schedule}" th:style="${lesson.lessonType.equals('ЛК') ? 'border-color:#03fc62' : (lesson.lessonType.equals('ПЗ') ? 'border-color:#f8fc03' : 'border-color:#fc0362')}">
 						<h3 th:text="${lesson.subject}"></h3>
 
 						<img src="#"

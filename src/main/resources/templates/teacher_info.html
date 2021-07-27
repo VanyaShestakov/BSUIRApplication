@@ -34,7 +34,19 @@
 
         <div class="blockContainer">
             <div class="block">
+
                 <div class="title" th:text="${employee.getLastName() + ' ' + employee.getFirstName() + ' ' + employee.getMiddleName()}"></div>
+                <img src="#"
+                     th:src="${employee.photoLink}"
+                     class="extendedBlockImage" >
+                <div class="enlargeText">
+                    <th:block th:text="#{info.degree.title}"></th:block>
+                    <th:block th:text="${employee.degree}"></th:block>
+                </div>
+                <div class="enlargeText">
+                    <th:block th:text="#{info.rank.title}"></th:block>
+                    <th:block th:if="${employee.rank != null}" th:text="${employee.rank}"></th:block>
+                </div>
             </div>
         </div>
     </div>

@@ -24,9 +24,16 @@ body {
 	font-weight: 700;
 }
 
+.enlargeText {
+	font-size: 25px;
+	font-weight: 700;
+	padding-bottom: 20px;
+}
+
 .title{
 	font-size:50px;
 	font-weight: 700;
+	padding-bottom: 30px;
 }
 
 .link{
@@ -77,8 +84,6 @@ p {
 	margin-top: 100px;
 }
 
-
-
 .blockContainer {
 	display: block;
 	width: 100%;
@@ -98,6 +103,13 @@ p {
 	border-radius: 20px;
 	border-color: #0085ff;
 	border-width: 3px;
+	transition: 0.2s;
+
+}
+
+.block:hover{
+	transition: 0.2s;
+	background: rgba(49, 49, 49, 0.5);
 }
 
 .data {
@@ -170,6 +182,16 @@ tr {
 	margin-right: 20px;
 	border-radius: 50%;
 }
+
+.extendedBlockImage{
+	float: left;
+	width: 150px;
+	height: 150px;
+	margin-right: 20px;
+	border-radius: 50%;
+	position: relative;
+}
+
 
 .textField {
 	text-decoration: none;
