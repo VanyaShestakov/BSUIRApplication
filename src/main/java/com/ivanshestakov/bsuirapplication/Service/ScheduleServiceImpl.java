@@ -5,8 +5,10 @@ import com.ivanshestakov.bsuirapplication.BSUIRAPIEntity.BSUIRSchedule;
 import com.ivanshestakov.bsuirapplication.BSUIRAPIEntity.Schedules;
 import com.ivanshestakov.bsuirapplication.DAO.EmployeeDAO;
 import com.ivanshestakov.bsuirapplication.DAO.GroupDAO;
+import com.ivanshestakov.bsuirapplication.DAO.SelectedGroupDAO;
 import com.ivanshestakov.bsuirapplication.Model.Employee;
 import com.ivanshestakov.bsuirapplication.Model.Group;
+import com.ivanshestakov.bsuirapplication.Model.SelectedGroup;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,6 +27,9 @@ public class ScheduleServiceImpl implements ScheduleService{
 
     @Autowired
     private EmployeeDAO employeeDAO;
+
+    @Autowired
+    private SelectedGroupDAO selectedGroupDAO;
 
     @Override
     public BSUIRSchedule getFullScheduleForGroup(String groupNumber) {
@@ -84,7 +89,27 @@ public class ScheduleServiceImpl implements ScheduleService{
         return employeeDAO.getEmployeeById(id);
     }
 
+    @Transactional
+    @Override
+    public Group getGroupWithNumber(String groupNumber){
+        return groupDAO.getGroupWithNumber(groupNumber);
+    }
 
+    @Transactional
+    @Override
+    public void addSelectedGroup(SelectedGroup group) {
+        selectedGroupDAO.insertGroup(group);
+    }
+
+    @Transactional
+    @Override
+    public boolean selectedGroupExists(String groupNumber) {
+        return selectedGroupDAO.getSelectedGroups()
+                .stream()
+                .map(SelectedGroup::getGroupNumber)
+                .collect(Collectors.toList())
+                .contains(groupNumber);
+    }
 
 
 }

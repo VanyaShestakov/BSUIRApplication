@@ -4,6 +4,7 @@ import com.ivanshestakov.bsuirapplication.BSUIRAPIEntity.BSUIRSchedule;
 import com.ivanshestakov.bsuirapplication.BSUIRAPIEntity.Schedules;
 import com.ivanshestakov.bsuirapplication.Model.Employee;
 import com.ivanshestakov.bsuirapplication.Model.Group;
+import com.ivanshestakov.bsuirapplication.Model.SelectedGroup;
 
 import java.util.List;
 
@@ -28,5 +29,11 @@ public interface ScheduleService {
     public List<Employee> getEmployeesFromDB();
 
     public Employee getEmployeeById(int id);
+
+    public Group getGroupWithNumber(String groupNumber);
+
+    public void addSelectedGroup(SelectedGroup group);
+
+    public boolean selectedGroupExists(String groupNumber);
 
 }

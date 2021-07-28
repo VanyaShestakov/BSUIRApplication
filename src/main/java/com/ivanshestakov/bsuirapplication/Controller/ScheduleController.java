@@ -1,5 +1,7 @@
 package com.ivanshestakov.bsuirapplication.Controller;
 
+import com.ivanshestakov.bsuirapplication.Model.Group;
+import com.ivanshestakov.bsuirapplication.Model.SelectedGroup;
 import com.ivanshestakov.bsuirapplication.Service.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,6 +29,11 @@ public class ScheduleController {
             model.addAttribute("error", "The group with number " + groupNumber + " does not exists");
         } else {
             model.addAttribute("schedules", scheduleService.getSchedulesForGroup(groupNumber));
+            if (!scheduleService.selectedGroupExists(groupNumber)) {
+                Group group = scheduleService.getGroupWithNumber(groupNumber);
+                SelectedGroup selectedGroup = new SelectedGroup(group.getId(), groupNumber);
+                scheduleService.addSelectedGroup(selectedGroup);
+            }
         }
 
         return "my_schedule";

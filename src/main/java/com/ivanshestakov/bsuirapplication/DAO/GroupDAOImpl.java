@@ -20,8 +20,11 @@ public class GroupDAOImpl implements GroupDAO {
         newGroupList.stream().forEach(session::saveOrUpdate);
     }
 
-
     public List<Group> getGroups(){
         return entityManager.unwrap(Session.class).createQuery("from Group ", Group.class).getResultList();
+    }
+
+    public Group getGroupWithNumber(String groupNumber) {
+        return entityManager.unwrap(Session.class).createQuery("from Group where groupNumber = '" + groupNumber + "'", Group.class).getSingleResult();
     }
 }
