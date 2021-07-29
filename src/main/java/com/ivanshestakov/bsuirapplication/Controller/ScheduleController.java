@@ -20,22 +20,15 @@ public class ScheduleController {
     @GetMapping("/")
     private String showMySchedulePage(Model model) {
         model.addAttribute("error", "");
+        model.addAttribute("selectedGroups", scheduleService.getSelectedGroupsFromDB());
         return "my_schedule";
     }
 
     @PostMapping("/")
     private String showSchedule(@RequestParam String groupNumber, Model model) {
-        if (!scheduleService.groupExists(groupNumber)) {
-            model.addAttribute("error", "The group with number " + groupNumber + " does not exists");
-        } else {
-            model.addAttribute("schedules", scheduleService.getSchedulesForGroup(groupNumber));
-            if (!scheduleService.selectedGroupExists(groupNumber)) {
-                Group group = scheduleService.getGroupWithNumber(groupNumber);
-                SelectedGroup selectedGroup = new SelectedGroup(group.getId(), groupNumber);
-                scheduleService.addSelectedGroup(selectedGroup);
-            }
-        }
-
+        model.addAttribute("schedules", scheduleService.getSchedulesForGroup(groupNumber));
+        model.addAttribute("selectedGroups", scheduleService.getSelectedGroupsFromDB());
+        model.addAttribute("groupNumber", groupNumber);
         return "my_schedule";
     }
 
@@ -43,6 +36,21 @@ public class ScheduleController {
     private String showTeacherInfoPage(@RequestParam("id") int id, Model model) {
         model.addAttribute("employee", scheduleService.getEmployeeById(id));
         return "teacher_info";
+    }
+
+    @PostMapping("/addgroup")
+    private String addGroup (@RequestParam ("groupNumber") String groupNumber, Model model) {
+        if (!scheduleService.groupExists(groupNumber)) {
+            model.addAttribute("error", "The group with number " + groupNumber + " does not exists");
+        } else {
+            if (!scheduleService.selectedGroupExists(groupNumber)) {
+                Group group = scheduleService.getGroupWithNumber(groupNumber);
+                SelectedGroup selectedGroup = new SelectedGroup(group.getId(), groupNumber);
+                scheduleService.addSelectedGroup(selectedGroup);
+            }
+        }
+        model.addAttribute("selectedGroups", scheduleService.getSelectedGroupsFromDB());
+        return "my_schedule";
     }
 
 

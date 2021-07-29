@@ -36,4 +36,6 @@ public interface ScheduleService {
 
     public boolean selectedGroupExists(String groupNumber);
 
+    public List<SelectedGroup> getSelectedGroupsFromDB();
+
 }

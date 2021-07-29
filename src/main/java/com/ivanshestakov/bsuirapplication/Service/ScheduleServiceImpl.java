@@ -111,5 +111,11 @@ public class ScheduleServiceImpl implements ScheduleService{
                 .contains(groupNumber);
     }
 
+    @Transactional
+    @Override
+    public List<SelectedGroup> getSelectedGroupsFromDB() {
+        return selectedGroupDAO.getSelectedGroups();
+    }
+
 
 }

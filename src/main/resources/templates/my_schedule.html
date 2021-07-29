@@ -34,17 +34,29 @@
 
 			<div class="blockContainer">
 				<div class="block" align="center">
-					<form action="/BSUIRApp/" method="post">
+					<form action="/BSUIRApp/addgroup/" method="post">
 						<input class="textField" name="groupNumber" type="text"/>
-						<br>
-						<input class="button" type="submit" value="Get">
+						<input class="button" type="submit" value="Добавить группу">
+
+					</form>
+					<br><br><br>
+					<form  action="/BSUIRApp/" method="post">
+						<select class="textField" name="groupNumber">
+							<option th:each="group: ${selectedGroups}" th:text="${group.groupNumber}"/>
+						</select>
+						<input class="button" type="submit" value="Показать расписание">
 					</form>
 					<br>
 					<th:block th:text="${error}"></th:block>
 				</div>
 			</div>
 
+
+			<div class="title" align="center" th:text="${groupNumber}"></div>
+
+
 			<div class="blockContainer" th:each="schedule:${schedules}">
+
 				<h2 th:text="${schedule.weekDay}"></h2>
 					<div class="block" th:each="lesson:${schedule.schedule}" th:style="${lesson.lessonType.equals('ЛК') ? 'border-color:#03fc62' : (lesson.lessonType.equals('ПЗ') ? 'border-color:#f8fc03' : 'border-color:#fc0362')}">
 						<h3 th:text="${lesson.subject}"></h3>
