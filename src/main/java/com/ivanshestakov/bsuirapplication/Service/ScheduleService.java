@@ -38,4 +38,8 @@ public interface ScheduleService {
 
     public List<SelectedGroup> getSelectedGroupsFromDB();
 
+    public SelectedGroup getSelectedGroupWithNumber(String groupNumber);
+
+    public void deleteSelectedGroup(String groupNumber);
+
 }

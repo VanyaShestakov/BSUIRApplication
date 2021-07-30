@@ -24,6 +24,16 @@ body {
 	font-weight: 700;
 }
 
+.errorMessage {
+	font-family: "Veranda", sans-serif;
+	font-size: 12px;
+	font-weight: 700;
+	color: #ff1f5e;
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+	text-align: center;
+}
+
 .enlargeText {
 	font-size: 25px;
 	font-weight: 700;

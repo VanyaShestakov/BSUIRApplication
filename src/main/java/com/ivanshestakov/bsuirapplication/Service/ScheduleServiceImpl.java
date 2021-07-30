@@ -117,5 +117,17 @@ public class ScheduleServiceImpl implements ScheduleService{
         return selectedGroupDAO.getSelectedGroups();
     }
 
+    @Transactional
+    @Override
+    public SelectedGroup getSelectedGroupWithNumber(String groupNumber){
+        return selectedGroupDAO.getSelectedGroupWithNumber(groupNumber);
+    }
+
+    @Transactional
+    @Override
+    public void deleteSelectedGroup(String groupNumber) {
+        selectedGroupDAO.deleteSelectedGroup(groupNumber);
+    }
+
 
 }

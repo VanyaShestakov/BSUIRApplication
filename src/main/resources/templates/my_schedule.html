@@ -12,8 +12,12 @@
 <body>
 	<div class="page">
 
+
 		<nav class="menu">
 				<ul class="navbar">
+					<li>
+						<img style="z-index: 1; display: inline-block" height="50px" src="/style/Images/bsuir_logo.jpg">
+					</li>
 					<li>
 						<a class="active" href="/BSUIRApp/" th:text="#{menu.myschedule.title}"></a>
 					</li>
@@ -33,22 +37,28 @@
 		<div class="tape">
 
 			<div class="blockContainer">
+
+				<h2>Добавить в избранные</h2>
 				<div class="block" align="center">
 					<form action="/BSUIRApp/addgroup/" method="post">
 						<input class="textField" name="groupNumber" type="text"/>
 						<input class="button" type="submit" value="Добавить группу">
-
 					</form>
-					<br><br><br>
-					<form  action="/BSUIRApp/" method="post">
-						<select class="textField" name="groupNumber">
-							<option th:each="group: ${selectedGroups}" th:text="${group.groupNumber}"/>
-						</select>
-						<input class="button" type="submit" value="Показать расписание">
-					</form>
-					<br>
-					<th:block th:text="${error}"></th:block>
 				</div>
+				<div class="errorMessage" th:text="${error}"></div><br>
+
+				<h2>Избранные</h2>
+				<div class="block" align="center">
+					<form>
+						<select class="button" name="groupNumber">
+							<option class="textField" th:each="group: ${selectedGroups}" th:text="${group.groupNumber}"/>
+						</select>
+						
+						<input formaction="/BSUIRApp/" formmethod="post" class="button" type="submit" value="Показать расписание">
+						<input formaction="/BSUIRApp/deletegroup/" formmethod="post" class="button" type="submit" value="Удалить группу">
+					</form>
+				</div>
+
 			</div>
 
 

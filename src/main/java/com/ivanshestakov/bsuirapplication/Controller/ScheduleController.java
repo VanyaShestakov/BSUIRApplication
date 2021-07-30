@@ -32,6 +32,12 @@ public class ScheduleController {
         return "my_schedule";
     }
 
+    @PostMapping("/deletegroup")
+    private String deleteSelectedGroup(@RequestParam String groupNumber, Model model) {
+        scheduleService.deleteSelectedGroup(groupNumber);
+        return "redirect:/BSUIRApp/";
+    }
+
     @PostMapping("/teacher")
     private String showTeacherInfoPage(@RequestParam("id") int id, Model model) {
         model.addAttribute("employee", scheduleService.getEmployeeById(id));
@@ -41,16 +47,18 @@ public class ScheduleController {
     @PostMapping("/addgroup")
     private String addGroup (@RequestParam ("groupNumber") String groupNumber, Model model) {
         if (!scheduleService.groupExists(groupNumber)) {
-            model.addAttribute("error", "The group with number " + groupNumber + " does not exists");
+            model.addAttribute("error", "Группы: '" + groupNumber + "' не существует");
+            model.addAttribute("selectedGroups", scheduleService.getSelectedGroupsFromDB());
+            return "my_schedule";
         } else {
             if (!scheduleService.selectedGroupExists(groupNumber)) {
                 Group group = scheduleService.getGroupWithNumber(groupNumber);
                 SelectedGroup selectedGroup = new SelectedGroup(group.getId(), groupNumber);
                 scheduleService.addSelectedGroup(selectedGroup);
             }
+            return "redirect:/BSUIRApp/";
         }
-        model.addAttribute("selectedGroups", scheduleService.getSelectedGroupsFromDB());
-        return "my_schedule";
+
     }
 
 

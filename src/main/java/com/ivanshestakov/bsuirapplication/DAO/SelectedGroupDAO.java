@@ -9,4 +9,8 @@ public interface SelectedGroupDAO {
     public void insertGroup(SelectedGroup group);
 
     public List<SelectedGroup> getSelectedGroups();
+
+    public SelectedGroup getSelectedGroupWithNumber(String groupNumber);
+
+    public void deleteSelectedGroup(String groupNumber);
 }
