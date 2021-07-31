@@ -30,11 +30,20 @@
 
     </nav>
 
-    <div class="extendedTape">
+    <div class="tape">
 
         <div class="blockContainer">
             <form th:each="employee:${employees}">
-                <input formaction="/BSUIRApp/teacher/" formmethod="post" class="button" type="submit" th:value="${employee.getLastName() + ' ' + employee.getFirstName() + ' ' + employee.getMiddleName()}">
+                <input type="hidden" th:value="${employee.id}" th:name="id">
+                <input formaction="/BSUIRApp/teacher/"
+                       formmethod="post"
+                       class="button"
+                       type="submit"
+                       th:value="${employee.getLastName() + ' ' + employee.getFirstName() + ' ' + employee.getMiddleName()}"
+                       style="width: 500px; font-size: 20px; padding-bottom: 10px; padding-top: 10px; height: 50px"
+                >
+                <br>
+                <br>
             </form>
         </div>
     </div>
