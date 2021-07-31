@@ -18,7 +18,7 @@ public class ScheduleController {
     private ScheduleService scheduleService;
 
     @GetMapping("/")
-    private String showMySchedulePage(Model model) {
+    private String showMainPage(Model model) {
         model.addAttribute("error", "");
         model.addAttribute("selectedGroups", scheduleService.getSelectedGroupsFromDB());
         return "my_schedule";
