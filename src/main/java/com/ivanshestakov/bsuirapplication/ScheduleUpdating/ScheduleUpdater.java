@@ -23,6 +23,16 @@ public class ScheduleUpdater {
         scheduleService.updateEmployees(scheduleService.getEmployeesFromServer());
     }
 
+    @Scheduled(initialDelay = 2000, fixedDelay = 10000)
+    public void updateSpecialties(){
+        scheduleService.updateSpecialties(scheduleService.getSpecialtiesFromServer());
+    }
+
+    @Scheduled(initialDelay = 2000, fixedDelay = 10000)
+    public void updateFaculties() {
+        scheduleService.updateFaculties(scheduleService.getFacultiesFromServer());
+    }
+
 
 
 

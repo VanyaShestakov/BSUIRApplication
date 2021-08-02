@@ -3,12 +3,8 @@ package com.ivanshestakov.bsuirapplication.Service;
 import com.ivanshestakov.bsuirapplication.Connector.ServerConnector;
 import com.ivanshestakov.bsuirapplication.BSUIRAPIEntity.BSUIRSchedule;
 import com.ivanshestakov.bsuirapplication.BSUIRAPIEntity.Schedules;
-import com.ivanshestakov.bsuirapplication.DAO.EmployeeDAO;
-import com.ivanshestakov.bsuirapplication.DAO.GroupDAO;
-import com.ivanshestakov.bsuirapplication.DAO.SelectedGroupDAO;
-import com.ivanshestakov.bsuirapplication.Model.Employee;
-import com.ivanshestakov.bsuirapplication.Model.Group;
-import com.ivanshestakov.bsuirapplication.Model.SelectedGroup;
+import com.ivanshestakov.bsuirapplication.DAO.*;
+import com.ivanshestakov.bsuirapplication.Model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,6 +26,12 @@ public class ScheduleServiceImpl implements ScheduleService{
 
     @Autowired
     private SelectedGroupDAO selectedGroupDAO;
+
+    @Autowired
+    private SpecialtyDAO specialtyDAO;
+
+    @Autowired
+    private FacultyDAO facultyDAO;
 
     @Override
     public BSUIRSchedule getFullScheduleForGroup(String groupNumber) {
@@ -127,6 +129,40 @@ public class ScheduleServiceImpl implements ScheduleService{
     @Override
     public void deleteSelectedGroup(String groupNumber) {
         selectedGroupDAO.deleteSelectedGroup(groupNumber);
+    }
+
+    @Override
+    public List<Specialty> getSpecialtiesFromServer() {
+        return serverConnector.getSpecialties();
+    }
+
+    @Transactional
+    @Override
+    public List<Specialty> getSpecialtiesFromDB() {
+        return specialtyDAO.getSpecialties();
+    }
+
+    @Transactional
+    @Override
+    public void updateSpecialties(List<Specialty> newSpecialtyList) {
+        specialtyDAO.updateSpecialtyTable(newSpecialtyList);
+    }
+
+    @Override
+    public List<Faculty> getFacultiesFromServer() {
+        return serverConnector.getFaculties();
+    }
+
+    @Transactional
+    @Override
+    public List<Faculty> getFacultiesFromDB() {
+        return facultyDAO.getFaculties();
+    }
+
+    @Transactional
+    @Override
+    public void updateFaculties(List<Faculty> newFacultyList) {
+        facultyDAO.updateFacultyTable(newFacultyList);
     }
 
 

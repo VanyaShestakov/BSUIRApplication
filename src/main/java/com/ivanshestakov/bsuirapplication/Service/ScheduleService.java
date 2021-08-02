@@ -2,9 +2,7 @@ package com.ivanshestakov.bsuirapplication.Service;
 
 import com.ivanshestakov.bsuirapplication.BSUIRAPIEntity.BSUIRSchedule;
 import com.ivanshestakov.bsuirapplication.BSUIRAPIEntity.Schedules;
-import com.ivanshestakov.bsuirapplication.Model.Employee;
-import com.ivanshestakov.bsuirapplication.Model.Group;
-import com.ivanshestakov.bsuirapplication.Model.SelectedGroup;
+import com.ivanshestakov.bsuirapplication.Model.*;
 
 import java.util.List;
 
@@ -41,5 +39,17 @@ public interface ScheduleService {
     public SelectedGroup getSelectedGroupWithNumber(String groupNumber);
 
     public void deleteSelectedGroup(String groupNumber);
+
+    public List<Specialty> getSpecialtiesFromServer();
+
+    public List<Specialty> getSpecialtiesFromDB();
+
+    public void updateSpecialties(List<Specialty> newSpecialtyList);
+
+    public List<Faculty> getFacultiesFromServer();
+
+    public List<Faculty> getFacultiesFromDB();
+
+    public void updateFaculties(List<Faculty> newFacultyList);
 
 }

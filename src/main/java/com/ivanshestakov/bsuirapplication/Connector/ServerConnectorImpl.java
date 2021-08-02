@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import java.lang.reflect.Type;
 import java.util.List;
 
 @Component
@@ -47,10 +48,16 @@ public class ServerConnectorImpl implements ServerConnector {
     }
 
     public List<Specialty> getSpecialties(){
-
+        ResponseEntity<List<Specialty>> responseEntity =
+                restTemplate.exchange(SPECIALTIES_URL, HttpMethod.GET, null, new ParameterizedTypeReference<List<Specialty>>() {
+                });
+        return responseEntity.getBody();
     }
 
     public List<Faculty> getFaculties() {
-
+        ResponseEntity<List<Faculty>> responseEntity =
+                restTemplate.exchange(FACULTIES_URL, HttpMethod.GET, null, new ParameterizedTypeReference<List<Faculty>>() {
+                });
+        return responseEntity.getBody();
     }
 }

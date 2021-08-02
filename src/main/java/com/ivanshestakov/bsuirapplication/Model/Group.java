@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "student_group", schema = "bsuir_application_db")
+@Table(name = "student_groups", schema = "bsuir_application_db")
 public class Group {
 
     @Id
