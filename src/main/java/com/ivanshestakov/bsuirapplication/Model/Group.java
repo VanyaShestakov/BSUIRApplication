@@ -33,16 +33,29 @@ public class Group {
     @JsonProperty("name")
     private String groupNumber;
 
+    @Column(name = "specialty_id")
+    @JsonProperty("specialityDepartmentEducationFormId")
+    private int specialtyId;
+
     public Group() {
     }
 
-    public Group(int id, int facultyId, String specialtyName, int course, String name, String facultyName) {
+    public Group(int id, int facultyId, String specialtyName, int course, String name, String facultyName, int specialtyId) {
         this.id = id;
         this.facultyId = facultyId;
         this.specialtyName = specialtyName;
         this.course = course;
         this.groupNumber = name;
         this.facultyName = facultyName;
+        this.specialtyId = specialtyId;
+    }
+
+    public int getSpecialitId() {
+        return specialtyId;
+    }
+
+    public void setSpecialitId(int specialtyId) {
+        this.specialtyId = specialtyId;
     }
 
     public String getFacultyName() {

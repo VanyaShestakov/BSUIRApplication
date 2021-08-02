@@ -35,7 +35,7 @@
         <div class="blockContainer">
             <form th:each="employee:${employees}">
                 <input type="hidden" th:value="${employee.id}" th:name="id">
-                <input formaction="/BSUIRApp/teacher/"
+                <input formaction="/employees/teacher/"
                        formmethod="post"
                        class="button"
                        type="submit"

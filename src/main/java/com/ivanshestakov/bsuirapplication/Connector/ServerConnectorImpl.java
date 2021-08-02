@@ -2,7 +2,9 @@ package com.ivanshestakov.bsuirapplication.Connector;
 
 import com.ivanshestakov.bsuirapplication.BSUIRAPIEntity.BSUIRSchedule;
 import com.ivanshestakov.bsuirapplication.Model.Employee;
+import com.ivanshestakov.bsuirapplication.Model.Faculty;
 import com.ivanshestakov.bsuirapplication.Model.Group;
+import com.ivanshestakov.bsuirapplication.Model.Specialty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
@@ -21,6 +23,8 @@ public class ServerConnectorImpl implements ServerConnector {
     private final String SCHEDULE_URL = "https://journal.bsuir.by/api/v1/studentGroup/schedule?studentGroup=";
     private final String GROUP_URL = "https://journal.bsuir.by/api/v1/groups";
     private final String EMPLOYEE_URL = "https://journal.bsuir.by/api/v1/employees";
+    private final String SPECIALTIES_URL = "https://journal.bsuir.by/api/v1/specialities";
+    private final String FACULTIES_URL = "https://journal.bsuir.by/api/v1/faculties";
 
     public BSUIRSchedule getBSUIRSchedule(String groupNumber) {
         ResponseEntity<BSUIRSchedule> responseEntity =
@@ -40,7 +44,13 @@ public class ServerConnectorImpl implements ServerConnector {
                 restTemplate.exchange(EMPLOYEE_URL, HttpMethod.GET, null, new ParameterizedTypeReference<List<Employee>>() {
                 });
         return responseEntity.getBody();
+    }
 
+    public List<Specialty> getSpecialties(){
+
+    }
+
+    public List<Faculty> getFaculties() {
 
     }
 }

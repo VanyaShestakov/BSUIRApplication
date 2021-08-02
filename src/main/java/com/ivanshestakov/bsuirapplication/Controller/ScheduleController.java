@@ -38,12 +38,6 @@ public class ScheduleController {
         return "redirect:/BSUIRApp/";
     }
 
-    @PostMapping("/teacher")
-    private String showTeacherInfoPage(@RequestParam("id") int id, Model model) {
-        model.addAttribute("employee", scheduleService.getEmployeeById(id));
-        return "teacher_info";
-    }
-
     @PostMapping("/addgroup")
     private String addGroup (@RequestParam ("groupNumber") String groupNumber, Model model) {
         if (!scheduleService.groupExists(groupNumber)) {
