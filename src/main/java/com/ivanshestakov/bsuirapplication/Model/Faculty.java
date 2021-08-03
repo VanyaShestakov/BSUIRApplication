@@ -2,10 +2,8 @@ package com.ivanshestakov.bsuirapplication.Model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "faculties")
@@ -24,6 +22,9 @@ public class Faculty {
     @JsonProperty("name")
     private String name;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "faculty")
+    private List<Group> groups;
+
     public Faculty() {
     }
 
@@ -31,6 +32,14 @@ public class Faculty {
         this.id = id;
         this.abbrev = abbrev;
         this.name = name;
+    }
+
+    public List<Group> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(List<Group> groups) {
+        this.groups = groups;
     }
 
     public int getId() {

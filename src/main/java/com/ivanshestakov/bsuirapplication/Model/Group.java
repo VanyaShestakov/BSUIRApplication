@@ -13,7 +13,11 @@ public class Group {
     @JsonProperty("id")
     private int id;
 
-    @Column(name = "faculty_id")
+    @ManyToOne(cascade = CascadeType.ALL )
+    @JoinColumn(name = "faculty_id")
+    private Faculty faculty;
+
+    @Transient
     @JsonProperty("facultyId")
     private int facultyId;
 
@@ -40,13 +44,37 @@ public class Group {
     public Group() {
     }
 
-    public Group(int id, int facultyId, String specialtyName, int course, String name, String facultyName, int specialtyId) {
+    public Group(int id, Faculty faculty, String specialtyName, int course, String name, String facultyName, int specialtyId) {
         this.id = id;
-        this.facultyId = facultyId;
+        this.faculty = faculty;
         this.specialtyName = specialtyName;
         this.course = course;
         this.groupNumber = name;
         this.facultyName = facultyName;
+        this.specialtyId = specialtyId;
+    }
+
+    public int getFacultyId() {
+        return facultyId;
+    }
+
+    public void setFacultyId(int facultyId) {
+        this.facultyId = facultyId;
+    }
+
+    public Faculty getFaculty() {
+        return faculty;
+    }
+
+    public void setFaculty(Faculty faculty) {
+        this.faculty = faculty;
+    }
+
+    public int getSpecialtyId() {
+        return specialtyId;
+    }
+
+    public void setSpecialtyId(int specialtyId) {
         this.specialtyId = specialtyId;
     }
 
@@ -74,14 +102,6 @@ public class Group {
         this.id = id;
     }
 
-    public int getFacultyId() {
-        return facultyId;
-    }
-
-    public void setFacultyId(int facultyId) {
-        this.facultyId = facultyId;
-    }
-
     public String getSpecialtyName() {
         return specialtyName;
     }
@@ -106,14 +126,4 @@ public class Group {
         this.groupNumber = groupNumber;
     }
 
-    @Override
-    public String toString() {
-        return "Group{" +
-                "id=" + id +
-                ", facultyId=" + facultyId +
-                ", specialtyName='" + specialtyName + '\'' +
-                ", course=" + course +
-                ", groupNumber='" + groupNumber + '\'' +
-                '}';
-    }
 }

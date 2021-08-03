@@ -17,7 +17,8 @@ public class GroupDAOImpl implements GroupDAO {
     @Override
     public void updateGroupTable(List<Group> newGroupList){
         Session session = entityManager.unwrap(Session.class);
-        newGroupList.stream().forEach(session::saveOrUpdate);
+        newGroupList.forEach(session::saveOrUpdate);
+        System.out.println("groups updated!");
     }
 
     public List<Group> getGroups(){
@@ -25,6 +26,8 @@ public class GroupDAOImpl implements GroupDAO {
     }
 
     public Group getGroupWithNumber(String groupNumber) {
-        return entityManager.unwrap(Session.class).createQuery("from Group where groupNumber = '" + groupNumber + "'", Group.class).getSingleResult();
+        Group group = entityManager.unwrap(Session.class).createQuery("from Group where groupNumber = '" + groupNumber + "'", Group.class).getSingleResult();
+        System.out.println(group.getFaculty().getName());
+        return group;
     }
 }
