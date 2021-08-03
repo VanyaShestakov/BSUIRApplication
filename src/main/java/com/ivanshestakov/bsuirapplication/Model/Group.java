@@ -13,9 +13,13 @@ public class Group {
     @JsonProperty("id")
     private int id;
 
-    @ManyToOne(cascade = CascadeType.ALL )
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "faculty_id")
     private Faculty faculty;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "specialty_id")
+    private Specialty specialty;
 
     @Transient
     @JsonProperty("facultyId")
@@ -37,21 +41,19 @@ public class Group {
     @JsonProperty("name")
     private String groupNumber;
 
-    @Column(name = "specialty_id")
+    @Transient
     @JsonProperty("specialityDepartmentEducationFormId")
     private int specialtyId;
 
     public Group() {
     }
 
-    public Group(int id, Faculty faculty, String specialtyName, int course, String name, String facultyName, int specialtyId) {
-        this.id = id;
-        this.faculty = faculty;
-        this.specialtyName = specialtyName;
-        this.course = course;
-        this.groupNumber = name;
-        this.facultyName = facultyName;
-        this.specialtyId = specialtyId;
+    public Specialty getSpecialty() {
+        return specialty;
+    }
+
+    public void setSpecialty(Specialty specialty) {
+        this.specialty = specialty;
     }
 
     public int getFacultyId() {

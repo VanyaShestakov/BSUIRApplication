@@ -25,6 +25,9 @@ public class Faculty {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "faculty")
     private List<Group> groups;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "faculty")
+    private List<Specialty> specialties;
+
     public Faculty() {
     }
 
@@ -32,6 +35,14 @@ public class Faculty {
         this.id = id;
         this.abbrev = abbrev;
         this.name = name;
+    }
+
+    public List<Specialty> getSpecialties() {
+        return specialties;
+    }
+
+    public void setSpecialties(List<Specialty> specialties) {
+        this.specialties = specialties;
     }
 
     public List<Group> getGroups() {

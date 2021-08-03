@@ -2,10 +2,8 @@ package com.ivanshestakov.bsuirapplication.Model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "specialties")
@@ -24,9 +22,16 @@ public class Specialty {
     @JsonProperty("abbrev")
     private String abbrev;
 
-    @Column(name = "faculty_id")
+    @Transient
     @JsonProperty("facultyId")
     private int facultyId;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "faculty_id")
+    private Faculty faculty;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "specialty")
+    private List<Group> groups;
 
     @Column(name = "code")
     @JsonProperty("code")
@@ -35,12 +40,12 @@ public class Specialty {
     public Specialty() {
     }
 
-    public Specialty(int id, String name, String abbrev, int facultyId, String code) {
-        this.id = id;
-        this.name = name;
-        this.abbrev = abbrev;
-        this.facultyId = facultyId;
-        this.code = code;
+    public List<Group> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(List<Group> groups) {
+        this.groups = groups;
     }
 
     public int getId() {
@@ -49,6 +54,14 @@ public class Specialty {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Faculty getFaculty() {
+        return faculty;
+    }
+
+    public void setFaculty(Faculty faculty) {
+        this.faculty = faculty;
     }
 
     public String getName() {

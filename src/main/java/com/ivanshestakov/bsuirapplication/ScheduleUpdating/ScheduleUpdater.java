@@ -16,6 +16,7 @@ public class ScheduleUpdater {
 
     @Autowired
     private ScheduleService scheduleService;
+
 /*
     @Scheduled(initialDelay = 2000, fixedDelay = 10000)
     public void updateFaculties() {
@@ -31,9 +32,10 @@ public class ScheduleUpdater {
 
 
     @Scheduled(initialDelay = 2000, fixedDelay = 5000)
-    public void updateDB(){
+    public void updateDatabase(){
         List<Group> groups = scheduleService.getGroupsFromServer();
         List<Faculty> faculties = scheduleService.getFacultiesFromServer();
+
         groups.forEach(group -> group.setFaculty(faculties.stream().filter(faculty -> faculty.getId()==group.getFacultyId()).findFirst().get()));
         scheduleService.updateGroups(groups);
     }
