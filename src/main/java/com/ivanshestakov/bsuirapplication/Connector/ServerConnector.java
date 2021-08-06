@@ -19,4 +19,6 @@ public interface ServerConnector {
     public List<Specialty> getSpecialties();
 
     public List<Faculty> getFaculties();
+
+    public BSUIRSchedule getBSUIRScheduleForEmployee(String id);
 }

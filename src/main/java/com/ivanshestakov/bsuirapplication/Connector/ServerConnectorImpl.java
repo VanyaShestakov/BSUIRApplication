@@ -22,6 +22,7 @@ public class ServerConnectorImpl implements ServerConnector {
     private RestTemplate restTemplate;
 
     private final String SCHEDULE_URL = "https://journal.bsuir.by/api/v1/studentGroup/schedule?studentGroup=";
+    private final String EMPLOYEE_SCHEDULE_URL = "https://journal.bsuir.by/api/v1/portal/employeeSchedule?employeeId=";
     private final String GROUP_URL = "https://journal.bsuir.by/api/v1/groups";
     private final String EMPLOYEE_URL = "https://journal.bsuir.by/api/v1/employees";
     private final String SPECIALTIES_URL = "https://journal.bsuir.by/api/v1/specialities";
@@ -31,6 +32,13 @@ public class ServerConnectorImpl implements ServerConnector {
         ResponseEntity<BSUIRSchedule> responseEntity =
                 restTemplate.exchange
                         (SCHEDULE_URL + groupNumber, HttpMethod.GET, null, new ParameterizedTypeReference<BSUIRSchedule>() {});
+        return responseEntity.getBody();
+    }
+
+    public BSUIRSchedule getBSUIRScheduleForEmployee(String id) {
+        ResponseEntity<BSUIRSchedule> responseEntity =
+                restTemplate.exchange
+                        (EMPLOYEE_SCHEDULE_URL + id, HttpMethod.GET, null, new ParameterizedTypeReference<BSUIRSchedule>() {});
         return responseEntity.getBody();
     }
 

@@ -7,12 +7,11 @@
 	<meta charset="utf-8">	
 
 	<title>BSUIR</title>
+
 </head>
 
 <body>
 	<div class="page">
-
-
 		<nav class="menu">
 				<ul class="navbar">
 					<li>
@@ -31,30 +30,322 @@
 
 		</nav>
 
+		<div class="temp">
+
+		<h2>Добавить в избранные</h2>
+		<div class="block" align="center">
+			<form action="/BSUIRApp/addgroup/" method="post">
+				<table>
+					<tr>
+						<td>
+							<input class="textField" name="groupNumber" type="text"/>
+						</td>
+						<td>
+							<input class="button" style="width: 100%" type="submit" value="Добавить группу">
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<div class="errorMessage" th:text="${error}"></div><br>
+
+		<h2>Избранные</h2>
+		<div class="block" align="center">
+			<form>
+				<select class="button" name="groupNumber">
+					<option class="textField" th:each="group: ${selectedGroups}" th:text="${group.groupNumber}"/>
+				</select>
+
+				<input formaction="/BSUIRApp/" formmethod="post" class="button" type="submit" value="Показать расписание">
+				<input formaction="/BSUIRApp/deletegroup/" formmethod="post" class="button" type="submit" value="Удалить группу">
+			</form>
+		</div>
+   </div>
+
+
+
+
 		<div class="tape">
 
 			<div class="blockContainer">
 
-				<h2>Добавить в избранные</h2>
-				<div class="block" align="center">
-					<form action="/BSUIRApp/addgroup/" method="post">
-						<input class="textField" name="groupNumber" type="text"/>
-						<input class="button" type="submit" value="Добавить группу">
-					</form>
+				<h2>Расписание группы 051007</h2>
+				<div class="block" style="border-color: #03fc62" align="center">
+					<table>
+						<tr>
+							<td>
+								<h2 style="margin-bottom: 0; margin-top: 0; display: inline-block">
+									Матем
+								</h2>
+								<h2 style="margin-bottom: 0; margin-top: 0; display: inline-block">
+									(ЛК)
+								</h2>
+							</td>
+							<td style="text-align: right">
+								<h2 style="margin-bottom: 0; margin-top: 0">
+									9:00
+								</h2>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="text">
+									каб. 403-4
+								</div>
+							</td>
+							<td style="text-align: right">
+								<div class="text">
+									10:20
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<img src="https://journal.bsuir.by/api/v1/portal/employees/photo/524498" class="blockImage">
+								<form method="post" action="/employees/teacher/">
+									<p class="text">
+										<input type="hidden" th:name="id">
+										<input class="button" type="submit" value="Рачковксий Н. Н.">
+									</p>
+								</form>
+							</td>
+						</tr>
+					</table>
 				</div>
-				<div class="errorMessage" th:text="${error}"></div><br>
+				<div class="block" style="border-color: #fffb28" align="center">
+					<table>
+						<tr>
+							<td>
+								<h2 style="margin-bottom: 0; margin-top: 0; display: inline-block">
+									ОАиП
+								</h2>
+								<h2 style="margin-bottom: 0; margin-top: 0; display: inline-block">
+									(ПЗ)
+								</h2>
+							</td>
+							<td style="text-align: right">
+								<h2 style="margin-bottom: 0; margin-top: 0">
+									10:35
+								</h2>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="text">
+									каб. 403-4
+								</div>
+							</td>
+							<td style="text-align: right">
+								<div class="text">
+									11:55
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<img src="https://journal.bsuir.by/api/v1/portal/employees/photo/500579" class="blockImage">
+								<form method="post" action="/employees/teacher/">
+									<p class="text">
+										<input type="hidden" th:name="id">
+										<input class="button" type="submit" value="Данилова Г. В.">
+									</p>
+								</form>
+							</td>
+							<td style="text-align: right">
+								<div class="text">
+									Подгр: 1
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="block" style="border-color: #fc036f" align="center">
+					<table>
+						<tr>
+							<td>
+								<h2 style="margin-bottom: 0; margin-top: 0; display: inline-block">
+									ЯП
+								</h2>
+								<h2 style="margin-bottom: 0; margin-top: 0; display: inline-block">
+									(ЛР)
+								</h2>
+							</td>
+							<td style="text-align: right">
+								<h2 style="margin-bottom: 0; margin-top: 0">
+									12:25
+								</h2>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="text">
+									каб. 303-4
+								</div>
+							</td>
+							<td style="text-align: right">
+								<div class="text">
+									13:45
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<img src="https://journal.bsuir.by/api/v1/portal/employees/photo/511957" class="blockImage">
+								<form method="post" action="/employees/teacher/">
+									<p class="text">
+										<input type="hidden" th:name="id">
+										<input class="button" type="submit" value="Шемаров А. И.">
+									</p>
+								</form>
+							</td>
+							<td style="text-align: right">
+								<div class="text">
+									Подгр: 2
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
 
-				<h2>Избранные</h2>
-				<div class="block" align="center">
-					<form>
-						<select class="button" name="groupNumber">
-							<option class="textField" th:each="group: ${selectedGroups}" th:text="${group.groupNumber}"/>
-						</select>
-						
-						<input formaction="/BSUIRApp/" formmethod="post" class="button" type="submit" value="Показать расписание">
-						<input formaction="/BSUIRApp/deletegroup/" formmethod="post" class="button" type="submit" value="Удалить группу">
-					</form>
+				<div class="block" style="border-color: #03fc62" align="center">
+					<table>
+						<tr>
+							<td>
+								<h2 style="margin-bottom: 0; margin-top: 0; display: inline-block">
+									Матем
+								</h2>
+								<h2 style="margin-bottom: 0; margin-top: 0; display: inline-block">
+									(ЛК)
+								</h2>
+							</td>
+							<td style="text-align: right">
+								<h2 style="margin-bottom: 0; margin-top: 0">
+									9:00
+								</h2>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="text">
+									каб. 403-4
+								</div>
+							</td>
+							<td style="text-align: right">
+								<div class="text">
+									10:20
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<img src="https://journal.bsuir.by/api/v1/portal/employees/photo/524498" class="blockImage">
+								<form method="post" action="/employees/teacher/">
+									<p class="text">
+										<input type="hidden" th:name="id">
+										<input class="button" type="submit" value="Рачковксий Н. Н.">
+									</p>
+								</form>
+							</td>
+						</tr>
+					</table>
 				</div>
+				<div class="block" style="border-color: #fffb28" align="center">
+					<table>
+						<tr>
+							<td>
+								<h2 style="margin-bottom: 0; margin-top: 0; display: inline-block">
+									ОАиП
+								</h2>
+								<h2 style="margin-bottom: 0; margin-top: 0; display: inline-block">
+									(ПЗ)
+								</h2>
+							</td>
+							<td style="text-align: right">
+								<h2 style="margin-bottom: 0; margin-top: 0">
+									10:35
+								</h2>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="text">
+									каб. 403-4
+								</div>
+							</td>
+							<td style="text-align: right">
+								<div class="text">
+									11:55
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<img src="https://journal.bsuir.by/api/v1/portal/employees/photo/500579" class="blockImage">
+								<form method="post" action="/employees/teacher/">
+									<p class="text">
+										<input type="hidden" th:name="id">
+										<input class="button" type="submit" value="Данилова Г. В.">
+									</p>
+								</form>
+							</td>
+							<td style="text-align: right">
+								<div class="text">
+									Подгр: 1
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="block" style="border-color: #fc036f" align="center">
+					<table>
+						<tr>
+							<td>
+								<h2 style="margin-bottom: 0; margin-top: 0; display: inline-block">
+									ЯП
+								</h2>
+								<h2 style="margin-bottom: 0; margin-top: 0; display: inline-block">
+									(ЛР)
+								</h2>
+							</td>
+							<td style="text-align: right">
+								<h2 style="margin-bottom: 0; margin-top: 0">
+									12:25
+								</h2>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="text">
+									каб. 303-4
+								</div>
+							</td>
+							<td style="text-align: right">
+								<div class="text">
+									13:45
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<img src="https://journal.bsuir.by/api/v1/portal/employees/photo/511957" class="blockImage">
+								<form method="post" action="/employees/teacher/">
+									<p class="text">
+										<input type="hidden" th:name="id">
+										<input class="button" type="submit" value="Шемаров А. И.">
+									</p>
+								</form>
+							</td>
+							<td style="text-align: right">
+								<div class="text">
+									Подгр: 2
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+
+
+
 
 			</div>
 
@@ -102,6 +393,7 @@
 		</div>
 
 
+
 		<footer class="footer">
 
 			<div class="footerLogo">
@@ -137,8 +429,6 @@
 				<h3 th:text="#{contactinfo.authorinfo}"></h3>
 			</div>
 		</footer>
-
    </div>
-
 </body>
 </html>

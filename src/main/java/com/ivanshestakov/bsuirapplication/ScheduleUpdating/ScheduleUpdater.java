@@ -31,7 +31,7 @@ public class ScheduleUpdater {
     }
  */
 
-
+/*
     @Scheduled(initialDelay = 2000, fixedDelay = 5000)
     public void updateDatabase(){
         List<Group> groups = scheduleService.getGroupsFromServer();
@@ -60,7 +60,7 @@ public class ScheduleUpdater {
     public void updateEmployees() {
         scheduleService.updateEmployees(scheduleService.getEmployeesFromServer());
     }
-
+*/
 
 
 

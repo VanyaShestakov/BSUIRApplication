@@ -47,6 +47,10 @@
                     <th:block th:text="#{info.rank.title}"></th:block>
                     <th:block th:if="${employee.rank != null}" th:text="${employee.rank}"></th:block>
                 </div>
+                <form method="post" action="/employeeschedule/">
+                    <input type="hidden" th:value="${employee.id}" name="id">
+                    <input class="button" type="submit" value="Показать расписание">
+                </form>
             </div>
         </div>
     </div>

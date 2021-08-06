@@ -12,6 +12,8 @@ public interface ScheduleService {
 
     public List<Schedules> getSchedulesForGroup(String groupNumber);
 
+    public List<Schedules> getSchedulesForEmployee(String id);
+
     public void updateGroups(List<Group> newGroupList);
 
     public List<Group> getGroupsFromServer();

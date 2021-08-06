@@ -27,7 +27,6 @@ public class GroupDAOImpl implements GroupDAO {
 
     public Group getGroupWithNumber(String groupNumber) {
         Group group = entityManager.unwrap(Session.class).createQuery("from Group where groupNumber = '" + groupNumber + "'", Group.class).getSingleResult();
-        System.out.println(group.getFaculty().getName());
         return group;
     }
 }

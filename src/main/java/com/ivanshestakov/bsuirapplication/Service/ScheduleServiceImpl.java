@@ -44,6 +44,11 @@ public class ScheduleServiceImpl implements ScheduleService{
     }
 
     @Override
+    public List<Schedules> getSchedulesForEmployee(String id) {
+        return serverConnector.getBSUIRScheduleForEmployee(id).getSchedules();
+    }
+
+    @Override
     public List<Group> getGroupsFromServer(){
         return serverConnector.getGroups();
     }
