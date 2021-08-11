@@ -24,13 +24,16 @@
                 <a href="/employees/" class="active" th:text="#{menu.employeeschedule.title}"></a>
             </li>
             <li>
+                <a href="/faculties/" th:text="#{menu.faculties.title}"></a>
+            </li>
+            <li>
                 <a href="#" th:text="#{menu.personalarea.title}"></a>
             </li>
         </ul>
 
     </nav>
 
-    <div class="tape">
+    <div class="extendedTape">
 
         <div class="blockContainer">
             <form th:each="employee:${employees}">

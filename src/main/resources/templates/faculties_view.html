@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link rel="stylesheet" th:href="@{/style/pageComponents.css}" href="/style/pageComponents.css" type="text/css"/>
+  <link rel="stylesheet" th:href="@{/style/footer.css}" href="/style/footer.css" type="text/css"/>
+  <link rel="stylesheet" th:href="@{/style/menu.css}" href="/style/menu.css" type="text/css"/>
+  <meta charset="utf-8">
+
+  <title>BSUIR</title>
+</head>
+
+<body>
+<div class="page">
+
+  <nav class="menu">
+    <ul class="navbar">
+      <li>
+        <a href="/BSUIRApp/" th:text="#{menu.myschedule.title}"></a>
+      </li>
+      <li>
+        <a href="#" th:text="#{menu.exams.title}"></a>
+      </li>
+      <li>
+        <a href="/employees/" th:text="#{menu.employeeschedule.title}"></a>
+      </li>
+      <li>
+        <a href="/faculties/" class="active" th:text="#{menu.faculties.title}"></a>
+      </li>
+      <li>
+        <a href="#" th:text="#{menu.personalarea.title}"></a>
+      </li>
+    </ul>
+
+  </nav>
+
+  <div class="extendedTape">
+
+    <div class="blockContainer">
+      <form th:each="faculty:${faculties}" th:if="${faculty.abbrev != null}">
+        <input type="hidden" th:value="${faculty.id}" th:name="id">
+        <input formaction="/employees/teacher/"
+               formmethod="post"
+               class="button"
+               type="submit"
+               th:value="${faculty.name.substring(0,1).toUpperCase() + faculty.name.substring(1)}"
+               style="width: 500px; font-size: 20px; padding-bottom: 10px; padding-top: 10px; height: 50px"
+        >
+        <br>
+        <br>
+      </form>
+    </div>
+  </div>
+
+  <footer class="footer">
+
+    <div class="footerLogo">
+      <img width="50px" src="images/1.png">
+    </div>
+
+    <div class="footerBlock">
+      <h3 th:text="#{contactinfo.socialnetworks.title}"></h3>
+      <ul class="footerList" >
+        <li>
+          <a href="#" class="footerLink" ><img src="images/instagram.png" width="15px" th:text="#{contactinfo.instagram.title}"></a>
+        </li>
+        <li>
+          <a href="#" class="footerLink" ><img src="images/vk.png" width="15px" th:text="#{contactinfo.vk.title}"></a>
+        </li>
+        <li>
+          <a href="#" class="footerLink" ><img src="images/telegram.png" width="15px" th:text="#{contactinfo.telegram.title}"></a>
+        </li>
+      </ul>
+    </div>
+    <div class="footerBlock">
+      <h3 th:text="#{contactinfo.contacts.title}"></h3>
+      <ul class="footerList" >
+        <li th:text="#{contactinfo.phonenumber}"></li>
+        <li th:text="#{contactinfo.address}"></li>
+        <li th:text="#{contactinfo.email}"></li>
+      </ul>
+    </div>
+    <div class="footerBlock">
+      <h3 th:text="#{contactinfo.friends&partners}"></h3>
+    </div>
+    <div class="authorInfo">
+      <h3 th:text="#{contactinfo.authorinfo}"></h3>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>

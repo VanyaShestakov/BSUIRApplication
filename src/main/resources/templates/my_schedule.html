@@ -24,6 +24,9 @@
 						<a href="/employees/" th:text="#{menu.employeeschedule.title}"></a>
 					</li>
 					<li>
+						<a href="/faculties/" th:text="#{menu.faculties.title}"></a>
+					</li>
+					<li>
 						<a href="#" th:text="#{menu.personalarea.title}"></a>
 					</li>
 				</ul>
@@ -38,10 +41,10 @@
 				<table>
 					<tr>
 						<td>
-							<input class="textField" name="groupNumber" type="text"/>
+							<input style="width: 150px" class="textField" name="groupNumber" type="text"/>
 						</td>
 						<td>
-							<input class="button" style="width: 100%" type="submit" value="Добавить группу">
+							<input class="button" style="width: 150px" type="submit" value="Добавить группу">
 						</td>
 					</tr>
 				</table>
@@ -69,7 +72,11 @@
 
 			<div class="blockContainer">
 
-				<h2>Расписание группы 051007</h2>
+				<div th:if="${group != null}">
+					<h2 th:text="'Расписание группы ' + ${group.groupNumber}"></h2>
+					<h4 th:text=" '('+${group.faculty.abbrev}+') ' + ${group.faculty.name.substring(0,1).toUpperCase() + group.faculty.name.substring(1) }"></h4>
+					<h4 th:text=" '('+${group.specialty.abbrev}+') ' + ${group.specialty.name}"></h4>
+				</div>
 				<div class="block" style="border-color: #03fc62" align="center">
 					<table>
 						<tr>
@@ -343,54 +350,45 @@
 						</tr>
 					</table>
 				</div>
-
-
-
-
 			</div>
+<!--			<div class="blockContainer" th:each="schedule:${schedules}">-->
 
+<!--				<h2 th:text="${schedule.weekDay}"></h2>-->
+<!--					<div class="block" th:each="lesson:${schedule.schedule}" th:style="${lesson.lessonType.equals('ЛК') ? 'border-color:#03fc62' : (lesson.lessonType.equals('ПЗ') ? 'border-color:#f8fc03' : 'border-color:#fc0362')}">-->
+<!--						<h3 th:text="${lesson.subject}"></h3>-->
 
-			<div class="title" align="center" th:text="${groupNumber}"></div>
+<!--						<img src="#"-->
+<!--							 th:if="${not lesson.employee.isEmpty()}"-->
+<!--							 th:src="${lesson.employee.get(0).photoLink}"-->
+<!--							 class="blockImage" >-->
 
+<!--						<form method="post" action="/employees/teacher/">-->
+<!--							<p class="text">-->
+<!--								<input type="hidden" th:if="${not lesson.employee.isEmpty()}" th:value="${lesson.employee.get(0).id}" th:name="id">-->
+<!--								<th:block th:text="#{info.employee.title}"/>-->
+<!--								<input class="button" type="submit" th:if="${not lesson.employee.isEmpty()}"-->
+<!--									   th:value="${lesson.employee.get(0).fio}">-->
+<!--							</p>-->
+<!--						</form>-->
 
-			<div class="blockContainer" th:each="schedule:${schedules}">
+<!--						<p class="text">-->
+<!--							<th:block th:text="#{info.auditory.title}"/>-->
+<!--							<th:block  th:if="${not lesson.auditory.isEmpty()}"-->
+<!--									   th:utext="${lesson.auditory.get(0)}"/>-->
+<!--						</p>-->
 
-				<h2 th:text="${schedule.weekDay}"></h2>
-					<div class="block" th:each="lesson:${schedule.schedule}" th:style="${lesson.lessonType.equals('ЛК') ? 'border-color:#03fc62' : (lesson.lessonType.equals('ПЗ') ? 'border-color:#f8fc03' : 'border-color:#fc0362')}">
-						<h3 th:text="${lesson.subject}"></h3>
+<!--						<p class="text">-->
+<!--							<th:block th:text="#{info.time.title}"/>-->
+<!--							<th:block th:utext="${lesson.lessonTime}"/>-->
+<!--						</p>-->
 
-						<img src="#"
-							 th:if="${not lesson.employee.isEmpty()}"
-							 th:src="${lesson.employee.get(0).photoLink}"
-							 class="blockImage" >
-
-						<form method="post" action="/employees/teacher/">
-							<p class="text">
-								<input type="hidden" th:if="${not lesson.employee.isEmpty()}" th:value="${lesson.employee.get(0).id}" th:name="id">
-								<th:block th:text="#{info.employee.title}"/>
-								<input class="button" type="submit" th:if="${not lesson.employee.isEmpty()}"
-									   th:value="${lesson.employee.get(0).fio}">
-							</p>
-						</form>
-
-						<p class="text">
-							<th:block th:text="#{info.auditory.title}"/>
-							<th:block  th:if="${not lesson.auditory.isEmpty()}"
-									   th:utext="${lesson.auditory.get(0)}"/>
-						</p>
-
-						<p class="text">
-							<th:block th:text="#{info.time.title}"/>
-							<th:block th:utext="${lesson.lessonTime}"/>
-						</p>
-
-						<p class="text">
-							<th:block th:text="#{info.week.title}"/>
-							<th:block th:utext="${lesson.getStringRepresentOfWeekNumbers()}"/>
-						</p>
-					</div>
-			</div>
-		</div>
+<!--						<p class="text">-->
+<!--							<th:block th:text="#{info.week.title}"/>-->
+<!--							<th:block th:utext="${lesson.getStringRepresentOfWeekNumbers()}"/>-->
+<!--						</p>-->
+<!--					</div>-->
+<!--			</div>-->
+	</div>
 
 
 

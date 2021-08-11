@@ -21,17 +21,15 @@ public class ScheduleController {
     private String showMainPage(Model model) {
         model.addAttribute("error", "");
         model.addAttribute("selectedGroups", scheduleService.getSelectedGroupsFromDB());
+
         return "my_schedule";
     }
 
     @PostMapping("/")
     private String showSchedule(@RequestParam String groupNumber, Model model) {
-        Group group = scheduleService.getGroupWithNumber(groupNumber);
-        model.addAttribute("schedules", scheduleService.getSchedulesForGroup(groupNumber));
+        //model.addAttribute("schedules", scheduleService.getSchedulesForGroup(groupNumber));
         model.addAttribute("selectedGroups", scheduleService.getSelectedGroupsFromDB());
-        model.addAttribute("groupNumber", group.getGroupNumber());
-        model.addAttribute("specialtyName", group.getSpecialty().getName());
-        model.addAttribute("facultyName", group.getFaculty().getName());
+        model.addAttribute("group", scheduleService.getGroupWithNumber(groupNumber));
         return "my_schedule";
     }
 
