@@ -27,7 +27,7 @@ public class ScheduleController {
 
     @PostMapping("/")
     private String showSchedule(@RequestParam String groupNumber, Model model) {
-        //model.addAttribute("schedules", scheduleService.getSchedulesForGroup(groupNumber));
+        model.addAttribute("schedules", scheduleService.getSchedulesForGroup(groupNumber));
         model.addAttribute("selectedGroups", scheduleService.getSelectedGroupsFromDB());
         model.addAttribute("group", scheduleService.getGroupWithNumber(groupNumber));
         return "my_schedule";

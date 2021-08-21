@@ -42,7 +42,7 @@ public class Employee {
 
     @Column(name = "full_name")
     @JsonProperty("fio")
-    private String full_name;
+    private String fullName;
 
 
     public Employee() {
@@ -104,11 +104,13 @@ public class Employee {
         this.photoLink = photoLink;
     }
 
-    public String getFull_name() {
-        return full_name;
+    @JsonProperty("fio")
+    public String getFullName() {
+        return fullName.contains("(") ? fullName.substring(0, fullName.indexOf("(")) : fullName;
     }
 
-    public void setFull_name(String full_name) {
-        this.full_name = full_name;
+    @JsonProperty("fio")
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 }

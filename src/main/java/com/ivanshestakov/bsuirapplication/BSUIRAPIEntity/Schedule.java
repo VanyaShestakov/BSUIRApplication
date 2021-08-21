@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.ivanshestakov.bsuirapplication.Model.Employee;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -58,7 +59,7 @@ public class Schedule {
     @JsonProperty("lessonType")
     private String lessonType;
     @JsonProperty("employee")
-    private List<Employee> employee = null;
+    private List<com.ivanshestakov.bsuirapplication.Model.Employee> employee = null;
     @JsonProperty("studentGroupModelList")
     private Object studentGroupModelList;
     @JsonProperty("zaoch")
@@ -189,7 +190,7 @@ public class Schedule {
     }
 
     @JsonProperty("employee")
-    public List<Employee> getEmployee() {
+    public List<com.ivanshestakov.bsuirapplication.Model.Employee> getEmployee() {
         return employee;
     }
 
@@ -239,7 +240,7 @@ public class Schedule {
     }
 
     public String getStringRepresentOfWeekNumbers() {
-        return weekNumber != null && weekNumber.size() != 0 ? (weekNumber.get(0) == 0 ? "Каждую неделю" : weekNumber.toString().substring(1, weekNumber.toString().length() - 1) ) : "";
+        return weekNumber != null && weekNumber.size() != 0 ? (weekNumber.get(0) == 0 ? "" : weekNumber.toString().substring(1, weekNumber.toString().length() - 1) ) : "";
     }
 
 }
