@@ -33,6 +33,38 @@
 
   </nav>
 
+  <div class="temp">
+    <h2>Расписание для преподавателя</h2>
+    <div class="block" align="center">
+      <table>
+        <tr>
+          <td>
+            <h3 th:text="${employee.getLastName() + ' ' + employee.getFirstName() + ' ' + employee.getMiddleName()}"></h3>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <img src="#"
+                 th:src="${employee.photoLink}"
+                 class="extendedBlockImage">
+          </td>
+          <td>
+            <div class="text">
+              <th:block th:text="#{info.degree.title}"></th:block>
+              <th:block th:text="${employee.degree}"></th:block>
+            </div>
+            <div class="text">
+              <th:block th:text="#{info.rank.title}"></th:block>
+              <th:block th:if="${employee.rank != null}" th:text="${employee.rank}"></th:block>
+            </div>
+          </td>
+        </tr>
+      </table>
+
+
+    </div>
+  </div>
+
   <div class="tape">
 
     <div class="blockContainer" th:each="schedule:${schedules}">
@@ -62,17 +94,15 @@
           </tr>
           <tr>
             <td>
-              <img src="#"
-                   th:if="${not lesson.employee.isEmpty()}"
-                   th:src="${lesson.employee.get(0).photoLink}"
-                   class="blockImage" >
-              <form method="post" action="/employees/teacher/">
-                <p class="text">
-                  <input type="hidden" th:name="id" th:value="${lesson.employee.get(0).id}">
-                  <input class="button" type="submit" th:if="${not lesson.employee.isEmpty()}"
-                         th:value="${lesson.employee.get(0).fullName}">
-                </p>
-              </form>
+              <div class="text">
+                <th:block th:text="'гр: ' + ${lesson.getStudentGroup().get(0)}"></th:block>
+              </div>
+            </td>
+            <td style="text-align: right">
+              <div class="text">
+                <th:block th:if="${lesson.numSubgroup != 0}" th:text="'подгр: ' + ${lesson.numSubgroup}"></th:block><br>
+                <th:block th:if="${lesson.getStringRepresentOfWeekNumbers() != ''}" th:text="'нед: ' + ${lesson.getStringRepresentOfWeekNumbers()}"></th:block>
+              </div>
             </td>
           </tr>
         </table>

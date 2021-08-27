@@ -18,6 +18,7 @@ public class EmployeeController {
     @PostMapping("/")
     private String showSchedule(@RequestParam("id") int id, Model model){
         model.addAttribute("schedules", scheduleService.getSchedulesForEmployee(String.valueOf(id)));
+        model.addAttribute("employee", scheduleService.getEmployeeById(id));
         return "employee_schedule_view";
     }
 }
