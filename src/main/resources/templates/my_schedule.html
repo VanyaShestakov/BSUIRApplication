@@ -30,40 +30,57 @@
 						<a href="#" th:text="#{menu.personalarea.title}"></a>
 					</li>
 				</ul>
-
 		</nav>
 
 		<div class="temp">
+			<h2 th:text="#{info.title.addtofavorites}"></h2>
+			<div class="block" align="center">
+				<form action="/BSUIRApp/addgroup/" method="post">
+					<table>
+						<tr>
+							<td>
+								<input style="width: 150px"
+									   class="textField"
+									   name="groupNumber"
+									   type="text"/>
+							</td>
+							<td>
+								<input class="button"
+									   style="width: 150px"
+									   type="submit"
+									   value="Добавить группу">
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
 
-		<h2>Добавить в избранные</h2>
-		<div class="block" align="center">
-			<form action="/BSUIRApp/addgroup/" method="post">
-				<table>
-					<tr>
-						<td>
-							<input style="width: 150px" class="textField" name="groupNumber" type="text"/>
-						</td>
-						<td>
-							<input class="button" style="width: 150px" type="submit" value="Добавить группу">
-						</td>
-					</tr>
-				</table>
-			</form>
-		</div>
-		<div class="errorMessage" th:text="${error}"></div><br>
+			<div class="errorMessage" th:text="${error}"></div><br>
 
-		<h2>Избранные</h2>
-		<div class="block" align="center">
-			<form>
-				<select class="button" name="groupNumber">
-					<option class="textField" th:each="group: ${selectedGroups}" th:text="${group.groupNumber}"/>
-				</select>
+			<h2 th:text="#{info.title.favorites}"></h2>
+			<div class="block" align="center">
+				<form>
+					<select class="button" name="groupNumber">
+						<option class="textField"
+								th:each="group: ${selectedGroups}"
+								th:text="${group.groupNumber}">
 
-				<input formaction="/BSUIRApp/" formmethod="post" class="button" type="submit" value="Показать расписание">
-				<input formaction="/BSUIRApp/deletegroup/" formmethod="post" class="button" type="submit" value="Удалить группу">
-			</form>
-		</div>
-   </div>
+						</option>
+					</select>
+
+					<input formaction="/BSUIRApp/"
+						   formmethod="post"
+						   class="button"
+						   type="submit"
+						   value="Показать расписание">
+					<input formaction="/BSUIRApp/deletegroup/"
+						   formmethod="post"
+						   class="button"
+						   type="submit"
+						   value="Удалить группу">
+				</form>
+			</div>
+   		</div>
 
 
 
@@ -74,6 +91,9 @@
 					<h2 th:text="'Расписание группы ' + ${group.groupNumber}"></h2>
 					<h4 th:text=" '('+${group.faculty.abbrev}+') ' + ${group.faculty.name.substring(0,1).toUpperCase() + group.faculty.name.substring(1) }"></h4>
 					<h4 th:text=" '('+${group.specialty.abbrev}+') ' + ${group.specialty.name}"></h4>
+				</div>
+				<div th:if="${group == null}">
+					<h1 style="margin-bottom: 50%">Выберите группу!</h1>
 				</div>
 			</div>
 			<div class="blockContainer" th:each="schedule:${schedules}">
