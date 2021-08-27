@@ -70,7 +70,7 @@
                 <p class="text">
                   <input type="hidden" th:name="id" th:value="${lesson.employee.get(0).id}">
                   <input class="button" type="submit" th:if="${not lesson.employee.isEmpty()}"
-                         th:value="${lesson.employee.get(0).fio}">
+                         th:value="${lesson.employee.get(0).fullName}">
                 </p>
               </form>
             </td>
