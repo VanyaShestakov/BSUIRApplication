@@ -4,11 +4,13 @@ import com.ivanshestakov.bsuirapplication.Model.Group;
 import com.ivanshestakov.bsuirapplication.Model.SelectedGroup;
 import com.ivanshestakov.bsuirapplication.Service.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
@@ -19,8 +21,10 @@ public class ScheduleController {
     private ScheduleService scheduleService;
 
     @GetMapping("/")
-    private String showMainPage(Model model, @CookieValue(value = "groupNumber") String groupNumber) {
-        if (groupNumber != null) {
+    private String showMainPage(Model model, /*@CookieValue(value = "groupNumber") String groupNumber,*/ HttpServletRequest request) {
+        Cookie[] cookies;
+        if ((cookies = request.getCookies()) != null) {
+            String groupNumber = cookies[0].getValue();
             model.addAttribute("error", "");
             fillModelForView(model, groupNumber);
         } else {

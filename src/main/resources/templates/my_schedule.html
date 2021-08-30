@@ -62,9 +62,19 @@
 				<form>
 					<select class="button" name="groupNumber">
 						<option class="textField"
-								th:each="group: ${selectedGroups}"
-								th:text="${group.groupNumber}">
-
+								th:each="selectedGroup: ${selectedGroups}"
+								th:text="${selectedGroup.groupNumber}"
+								th:if="${group} != null and  ${group.groupNumber} != ${selectedGroup.groupNumber}">
+						</option>
+						<option class="textField"
+								th:if="${group} != null"
+								th:text="${group.groupNumber}"
+								selected>
+						</option>
+						<option class="textField"
+								th:if="${group} == null"
+								th:each="selectedGroup: ${selectedGroups}"
+								th:text="${selectedGroup.groupNumber}">
 						</option>
 					</select>
 
