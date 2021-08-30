@@ -91,6 +91,7 @@
 					<h2 th:text="'Расписание группы ' + ${group.groupNumber}"></h2>
 					<h4 th:text=" '('+${group.faculty.abbrev}+') ' + ${group.faculty.name.substring(0,1).toUpperCase() + group.faculty.name.substring(1) }"></h4>
 					<h4 th:text=" '('+${group.specialty.abbrev}+') ' + ${group.specialty.name}"></h4>
+					<h4 th:text="'Текущая неделя: ' + ${currentWeek}"></h4>
 				</div>
 				<div th:if="${group == null}">
 					<h1 style="margin-bottom: 50%">Выберите группу!</h1>
@@ -98,7 +99,7 @@
 			</div>
 			<div class="blockContainer" th:each="schedule:${schedules}">
 				<h2 th:text="${schedule.weekDay}"></h2>
-				<div class="block" align="center" th:each="lesson:${schedule.schedule}" th:style="${lesson.lessonType.equals('ЛК') ? 'border-color:#03fc62' : (lesson.lessonType.equals('ПЗ') ? 'border-color:#f8fc03' : 'border-color:#fc0362')}">
+				<div class="block" align="center" th:each="lesson:${schedule.schedule}" th:if="${lesson.weekNumber.contains(currentWeek)}" th:style="${lesson.lessonType.equals('ЛК') ? 'border-color:#03fc62' : (lesson.lessonType.equals('ПЗ') ? 'border-color:#f8fc03' : 'border-color:#fc0362')}">
 					<table>
 						<tr>
 							<td>

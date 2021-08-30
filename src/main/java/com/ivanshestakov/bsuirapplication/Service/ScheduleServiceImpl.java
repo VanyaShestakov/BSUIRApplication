@@ -170,5 +170,10 @@ public class ScheduleServiceImpl implements ScheduleService{
         facultyDAO.updateFacultyTable(newFacultyList);
     }
 
+    @Override
+    public int getCurrentWeekFromServer() {
+        return serverConnector.getCurrentWeek();
+    }
+
 
 }

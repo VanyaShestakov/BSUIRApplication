@@ -54,4 +54,6 @@ public interface ScheduleService {
 
     public void updateFaculties(List<Faculty> newFacultyList);
 
+    public int getCurrentWeekFromServer();
+
 }

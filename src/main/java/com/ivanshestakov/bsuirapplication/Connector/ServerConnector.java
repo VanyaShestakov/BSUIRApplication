@@ -21,4 +21,6 @@ public interface ServerConnector {
     public List<Faculty> getFaculties();
 
     public BSUIRSchedule getBSUIRScheduleForEmployee(String id);
+
+    public int getCurrentWeek();
 }
