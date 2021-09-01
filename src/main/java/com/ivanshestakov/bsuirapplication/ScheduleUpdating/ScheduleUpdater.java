@@ -31,7 +31,7 @@ public class ScheduleUpdater {
     }
  */
 
-/*
+
     @Scheduled(initialDelay = 2000, fixedDelay = 5000)
     public void updateDatabase(){
         List<Group> groups = scheduleService.getGroupsFromServer();
@@ -41,7 +41,7 @@ public class ScheduleUpdater {
                 specialty.setFaculty(faculties.stream()
                         .filter(faculty -> faculty.getId()==specialty.getFacultyId())
                         .findFirst()
-                        .get()));
+                        .orElse(new Faculty())));
         groups.forEach(group -> {
                 group.setFaculty(faculties.stream()
                         .filter(faculty -> faculty.getId()==group.getFacultyId())
@@ -53,6 +53,7 @@ public class ScheduleUpdater {
                         .get());
         });
         scheduleService.updateGroups(groups);
+        System.out.println("updated");
     }
 
 
@@ -60,7 +61,7 @@ public class ScheduleUpdater {
     public void updateEmployees() {
         scheduleService.updateEmployees(scheduleService.getEmployeesFromServer());
     }
-*/
+
 
 
 

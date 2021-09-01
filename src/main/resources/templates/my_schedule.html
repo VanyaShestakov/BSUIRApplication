@@ -78,11 +78,17 @@
 						</option>
 					</select>
 
-					<input formaction="/BSUIRApp/"
+					<input formaction="/BSUIRApp/fullSchedule"
 						   formmethod="post"
 						   class="button"
 						   type="submit"
-						   value="Показать расписание">
+						   value="Показать полное расписание">
+					<input formaction="/BSUIRApp/scheduleByWeek"
+						   formmethod="post"
+						   class="button"
+						   type="submit"
+						   value="Показать текущее расписание">
+
 					<input formaction="/BSUIRApp/deletegroup/"
 						   formmethod="post"
 						   class="button"
@@ -91,9 +97,6 @@
 				</form>
 			</div>
    		</div>
-
-
-
 
 		<div class="tape">
 			<div class="blockContainer">
@@ -107,9 +110,57 @@
 					<h1 style="margin-bottom: 50%">Выберите группу!</h1>
 				</div>
 			</div>
-			<div class="blockContainer" th:each="schedule:${schedules}">
+			<div class="blockContainer" th:if="not ${isFull}" th:each="schedule:${schedules}">
 				<h2 th:text="${schedule.weekDay}"></h2>
 				<div class="block" align="center" th:each="lesson:${schedule.schedule}" th:if="${lesson.weekNumber.contains(currentWeek)}" th:style="${lesson.lessonType.equals('ЛК') ? 'border-color:#03fc62' : (lesson.lessonType.equals('ПЗ') ? 'border-color:#f8fc03' : 'border-color:#fc0362')}">
+					<table>
+						<tr>
+							<td>
+								<h2 th:text="${lesson.subject}" style="margin-bottom: 0; margin-top: 0; display: inline-block"></h2>
+								<h2 th:text="'(' + ${lesson.lessonType} + ')'" style="margin-bottom: 0; margin-top: 0; display: inline-block"></h2>
+							</td>
+							<td style="text-align: right">
+								<h2 th:text="${lesson.startLessonTime}" style="margin-bottom: 0; margin-top: 0"></h2>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="text">
+									<th:block  th:if="${not lesson.auditory.isEmpty()}"
+											   th:utext="${lesson.auditory.get(0)}"/>
+								</div>
+							</td>
+							<td style="text-align: right">
+								<div th:text="${lesson.endLessonTime}" class="text"></div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<img src="#"
+									 th:if="${not lesson.employee.isEmpty()}"
+									 th:src="${lesson.employee.get(0).photoLink}"
+									 class="blockImage" >
+								<form method="post" action="/employees/teacher/">
+									<p class="text">
+										<input type="hidden" th:name="id" th:if="${not lesson.employee.isEmpty()}" th:value="${lesson.employee.get(0).id}">
+										<input class="button" type="submit" th:if="${not lesson.employee.isEmpty()}"
+											   th:value="${lesson.employee.get(0).fullName}">
+									</p>
+								</form>
+							</td>
+							<td style="text-align: right">
+								<div class="text">
+									<th:block th:if="${lesson.numSubgroup != 0}" th:text="'подгр: ' + ${lesson.numSubgroup}"></th:block><br>
+									<th:block th:if="${lesson.getStringRepresentOfWeekNumbers() != ''}" th:text="'нед: ' + ${lesson.getStringRepresentOfWeekNumbers()}"></th:block>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="blockContainer" th:if="${isFull}" th:each="schedule:${schedules}">
+				<h2 th:text="${schedule.weekDay}"></h2>
+				<div class="block" align="center" th:each="lesson:${schedule.schedule}" th:style="${lesson.lessonType.equals('ЛК') ? 'border-color:#03fc62' : (lesson.lessonType.equals('ПЗ') ? 'border-color:#f8fc03' : 'border-color:#fc0362')}">
 					<table>
 						<tr>
 							<td>
