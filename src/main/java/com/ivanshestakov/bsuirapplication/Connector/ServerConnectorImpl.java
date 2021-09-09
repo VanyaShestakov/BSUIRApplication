@@ -32,48 +32,65 @@ public class ServerConnectorImpl implements ServerConnector {
     public BSUIRSchedule getBSUIRSchedule(String groupNumber) {
         ResponseEntity<BSUIRSchedule> responseEntity =
                 restTemplate.exchange
-                        (SCHEDULE_URL + groupNumber, HttpMethod.GET, null, new ParameterizedTypeReference<BSUIRSchedule>() {});
+                        (SCHEDULE_URL + groupNumber,
+                                HttpMethod.GET,
+                                null,
+                                new ParameterizedTypeReference<BSUIRSchedule>() {});
         return responseEntity.getBody();
     }
 
     public BSUIRSchedule getBSUIRScheduleForEmployee(String id) {
         ResponseEntity<BSUIRSchedule> responseEntity =
                 restTemplate.exchange
-                        (EMPLOYEE_SCHEDULE_URL + id, HttpMethod.GET, null, new ParameterizedTypeReference<BSUIRSchedule>() {});
+                        (EMPLOYEE_SCHEDULE_URL + id,
+                                HttpMethod.GET,
+                                null,
+                                new ParameterizedTypeReference<BSUIRSchedule>() {});
         return responseEntity.getBody();
     }
 
     public List<Group> getGroups() {
         ResponseEntity<List<Group>> responseEntity =
-                restTemplate.exchange(GROUP_URL, HttpMethod.GET, null, new ParameterizedTypeReference<List<Group>>() {});
+                restTemplate.exchange(GROUP_URL,
+                        HttpMethod.GET,
+                        null,
+                        new ParameterizedTypeReference<List<Group>>() {});
         return responseEntity.getBody();
     }
 
     public List<Employee> getEmployees() {
         ResponseEntity<List<Employee>> responseEntity =
-                restTemplate.exchange(EMPLOYEE_URL, HttpMethod.GET, null, new ParameterizedTypeReference<List<Employee>>() {
-                });
+                restTemplate.exchange(EMPLOYEE_URL,
+                        HttpMethod.GET,
+                        null,
+                        new ParameterizedTypeReference<List<Employee>>() {});
         return responseEntity.getBody();
     }
 
     public List<Specialty> getSpecialties(){
         ResponseEntity<List<Specialty>> responseEntity =
-                restTemplate.exchange(SPECIALTIES_URL, HttpMethod.GET, null, new ParameterizedTypeReference<List<Specialty>>() {
-                });
+                restTemplate.exchange(SPECIALTIES_URL,
+                        HttpMethod.GET,
+                        null,
+                        new ParameterizedTypeReference<List<Specialty>>() {});
         return responseEntity.getBody();
     }
 
     public List<Faculty> getFaculties() {
         ResponseEntity<List<Faculty>> responseEntity =
-                restTemplate.exchange(FACULTIES_URL, HttpMethod.GET, null, new ParameterizedTypeReference<List<Faculty>>() {
-                });
+                restTemplate.exchange(FACULTIES_URL,
+                        HttpMethod.GET,
+                        null,
+                        new ParameterizedTypeReference<List<Faculty>>() {});
         return responseEntity.getBody();
     }
 
     public int getCurrentWeek() {
         ResponseEntity<Integer> responseEntity =
-                restTemplate.exchange(CURRENT_WEEK_URL, HttpMethod.GET, null, new ParameterizedTypeReference<Integer>() {
-                });
+                restTemplate.exchange(CURRENT_WEEK_URL,
+                        HttpMethod.GET,
+                        null,
+                        new ParameterizedTypeReference<Integer>() {});
         return responseEntity.getBody();
     }
 

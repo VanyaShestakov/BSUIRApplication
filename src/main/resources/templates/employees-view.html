@@ -34,8 +34,30 @@
     </nav>
 
     <div class="extendedTape">
+        <div class="blockContainer">
+            <h2>
+                Поиск преподавателей
+            </h2>
+            <form>
+                <input
+                        class="extendedTextField"
+                        name="employeeName"
+                        type="text"/>
+                <div class="errorMessage" th:if="${errorMessage != null}" th:text="${errorMessage}"></div><br>
+                <input formaction="/employees/search-teacher/"
+                       formmethod="post"
+                       class="button"
+                       type="submit"
+                       th:value="Найти"
+                       style="width: 100%; font-size: 20px; height: 50px; margin-bottom: 100px"
+                >
+            </form>
+        </div>
 
         <div class="blockContainer">
+            <h2>
+                Преподаватели:
+            </h2>
             <form th:each="employee:${employees}">
                 <input type="hidden" th:value="${employee.id}" th:name="id">
                 <input formaction="/employees/teacher/"
@@ -43,7 +65,7 @@
                        class="button"
                        type="submit"
                        th:value="${employee.getLastName() + ' ' + employee.getFirstName() + ' ' + employee.getMiddleName()}"
-                       style="width: 500px; font-size: 20px; padding-bottom: 10px; padding-top: 10px; height: 50px"
+                       style="width: 100%; font-size: 20px; padding-bottom: 10px; padding-top: 10px; height: 50px"
                 >
                 <br>
                 <br>

@@ -11,4 +11,6 @@ public interface EmployeeDAO {
     public void updateEmployeesTable(List<Employee> newEmployeeList);
 
     public Employee getEmployeeById(int id);
+
+    public List<Employee> getEmployeesWithName(String employeeName);
 }

@@ -12,6 +12,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.ivanshestakov.bsuirapplication.Model.Employee;
 
+// int length = accuracyOfOutput_Str.Length()
+//int accuracyOfOutput_int = length == 1 || length == 2 ? 1 : length - 1
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
         "weekNumber",

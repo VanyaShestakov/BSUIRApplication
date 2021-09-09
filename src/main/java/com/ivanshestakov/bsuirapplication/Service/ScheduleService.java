@@ -3,6 +3,7 @@ package com.ivanshestakov.bsuirapplication.Service;
 import com.ivanshestakov.bsuirapplication.BSUIRAPIEntity.BSUIRSchedule;
 import com.ivanshestakov.bsuirapplication.BSUIRAPIEntity.Schedules;
 import com.ivanshestakov.bsuirapplication.Model.*;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -56,4 +57,6 @@ public interface ScheduleService {
 
     public int getCurrentWeekFromServer();
 
+    @Transactional
+    List<Employee> getEmployeesFromDBWithName(String employeeName);
 }

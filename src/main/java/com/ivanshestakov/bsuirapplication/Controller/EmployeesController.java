@@ -5,10 +5,7 @@ import com.ivanshestakov.bsuirapplication.Service.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Comparator;
 import java.util.List;
@@ -30,8 +27,22 @@ public class EmployeesController {
 
     @PostMapping("/teacher")
     private String showTeacherInfoPage(@RequestParam("id") int id, Model model) {
+        int n = 4;
+        int[] arr = new int[n];
         model.addAttribute("employee", scheduleService.getEmployeeById(id));
         return "teacher_info";
+    }
+
+    @PostMapping("/search-teacher")
+    private String searchEmployees(Model model, @RequestParam("employeeName") String employeeName){
+        if(employeeName.isBlank()) {
+            model.addAttribute("errorMessage", "Заполните поле!");
+            return "employees-view";
+        }
+        List<Employee> employees = scheduleService.getEmployeesFromDBWithName(employeeName);
+        employees.sort(Comparator.comparing(Employee::getLastName));
+        model.addAttribute("employees", employees);
+        return "employees-view";
     }
 
 

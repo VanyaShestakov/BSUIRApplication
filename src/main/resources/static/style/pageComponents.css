@@ -103,7 +103,7 @@ table {
 
 .extendedTape {
 	display: block;
-	width: 1000px;
+	width: 500px;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 100px;
@@ -226,4 +226,22 @@ tr {
 	border-radius: 20px;
 	border-style: none;
 }
+
+.extendedTextField {
+	text-decoration: none;
+	color: white;
+	font-family: "Veranda", sans-serif ;
+	font-size: 20px;
+	height: 50px;
+	line-height: 25px;
+	transition: 0.4s;
+	font-weight: 700;/*толщина шрифта*/
+	background-color: #3a3c3e;
+	border-radius: 20px;
+	border-style: none;
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+
 

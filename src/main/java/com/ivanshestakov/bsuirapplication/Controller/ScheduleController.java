@@ -22,7 +22,7 @@ public class ScheduleController {
     private ScheduleService scheduleService;
 
     @GetMapping("/")
-    private String showMainPage(Model model, /*@CookieValue(value = "groupNumber") String groupNumber,*/ HttpServletRequest request) {
+    private String showMainPage(Model model, HttpServletRequest request) {
         Cookie[] cookies;
         if ((cookies = request.getCookies()) != null) {
             String groupNumber = cookies[0].getValue();

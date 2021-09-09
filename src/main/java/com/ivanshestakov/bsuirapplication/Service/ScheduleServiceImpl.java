@@ -175,5 +175,11 @@ public class ScheduleServiceImpl implements ScheduleService{
         return serverConnector.getCurrentWeek();
     }
 
+    @Transactional
+    @Override
+    public List<Employee> getEmployeesFromDBWithName(String employeeName) {
+        return employeeDAO.getEmployeesWithName(employeeName.replaceAll(" ", ""));
+    }
+
 
 }
