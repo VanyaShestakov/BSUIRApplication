@@ -18,20 +18,6 @@ public class ScheduleUpdater {
     @Autowired
     private ScheduleService scheduleService;
 
-/*
-    @Scheduled(initialDelay = 2000, fixedDelay = 10000)
-    public void updateFaculties() {
-        scheduleService.updateFaculties(scheduleService.getFacultiesFromServer());
-    }
-
-
-    @Scheduled(initialDelay = 2000, fixedDelay = 10000)
-    public void updateGroups(){
-        scheduleService.updateGroups(scheduleService.getGroupsFromServer());
-    }
- */
-
-
     @Scheduled(initialDelay = 2000, fixedDelay = 5000)
     public void updateDatabase(){
         List<Group> groups = scheduleService.getGroupsFromServer();

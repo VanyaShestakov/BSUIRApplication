@@ -19,29 +19,24 @@ public class EmployeesController {
 
     @GetMapping("/")
     private String showMainPage(Model model) {
-        List<Employee> employees = scheduleService.getEmployeesFromDB();
-        employees.sort(Comparator.comparing(Employee::getLastName));
-        model.addAttribute("employees", employees);
         return "employees-view";
     }
 
     @PostMapping("/teacher")
     private String showTeacherInfoPage(@RequestParam("id") int id, Model model) {
-        int n = 4;
-        int[] arr = new int[n];
         model.addAttribute("employee", scheduleService.getEmployeeById(id));
         return "teacher_info";
     }
 
     @PostMapping("/search-teacher")
     private String searchEmployees(Model model, @RequestParam("employeeName") String employeeName){
-        if(employeeName.isBlank()) {
+        if (employeeName.isBlank()) {
             model.addAttribute("errorMessage", "Заполните поле!");
-            return "employees-view";
+        } else {
+            List<Employee> employees = scheduleService.getEmployeesFromDBWithName(employeeName);
+            employees.sort(Comparator.comparing(Employee::getLastName));
+            model.addAttribute("employees", employees);
         }
-        List<Employee> employees = scheduleService.getEmployeesFromDBWithName(employeeName);
-        employees.sort(Comparator.comparing(Employee::getLastName));
-        model.addAttribute("employees", employees);
         return "employees-view";
     }
 

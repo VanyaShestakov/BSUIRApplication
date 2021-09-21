@@ -60,7 +60,7 @@
 			<h2 th:text="#{info.title.favorites}"></h2>
 			<div class="block" align="center">
 				<form>
-					<select class="button" name="groupNumber">
+					<select class="button" name="groupNumber" style="width: 100%; margin-bottom: 15px">
 						<option class="textField"
 								th:each="selectedGroup: ${selectedGroups}"
 								th:text="${selectedGroup.groupNumber}"
@@ -82,18 +82,18 @@
 						   formmethod="post"
 						   class="button"
 						   type="submit"
-						   value="Показать полное расписание">
+						   value="Показать полное расписание" style="width: 100%; margin-bottom: 5px;">
 					<input formaction="/BSUIRApp/scheduleByWeek"
 						   formmethod="post"
 						   class="button"
 						   type="submit"
-						   value="Показать текущее расписание">
+						   value="Показать текущее расписание" style="width: 100%; margin-bottom: 5px">
 
 					<input formaction="/BSUIRApp/deletegroup/"
 						   formmethod="post"
 						   class="button"
 						   type="submit"
-						   value="Удалить группу">
+						   value="Удалить группу" style="width: 100%; margin-bottom: 5px">
 				</form>
 			</div>
    		</div>
